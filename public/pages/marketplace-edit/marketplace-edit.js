@@ -1,4 +1,4 @@
-import { initializeElements, setupPlaceholders, setupStandaloneHelperText } from '../../utils/common/element.js';
+import { initializeElements, setupPlaceholders, setupStandaloneHelperText, setupLocationCharCounter, setupPriceFormatter, getPriceValue } from '../../utils/common/element.js';
 import { navigateTo, getUrlParam, handlePostEditorBackNavigation } from '../../utils/common/navigation.js';
 import { getCurrentUserInfo } from '../../utils/common/user.js';
 import { uploadImages } from '../../utils/common/image.js';
@@ -49,75 +49,11 @@ async function init() {
         onSubmit: handlePostUpdate
     });
 
-    setupLocationCharCounter();
-    setupPriceFormatter();
+    setupLocationCharCounter(elements.productLocation, elements.locationCharCount);
+    const priceInput = document.getElementById('productPrice');
+    setupPriceFormatter(priceInput);
 
     await loadProductData();
-}
-
-// 거래 위치 글자수 제한
-function setupLocationCharCounter() {
-    const locationInput = elements.productLocation;
-    const locationCounter = elements.locationCharCount;
-    
-    if (!locationInput || !locationCounter) return;
-
-    locationCounter.textContent = locationInput.value.length;
-    const charCounterParent = locationCounter.parentElement;
-
-    locationInput.addEventListener('input', () => {
-        // 최대 26자 제한
-        if (locationInput.value.length > 26) {
-            locationInput.value = locationInput.value.substring(0, 26);
-        }
-        
-        const count = locationInput.value.length;
-        locationCounter.textContent = count;
-        // 24자 이상일 때 경고 표시
-        charCounterParent?.classList.toggle('warning', count >= 24);
-    });
-}
-
-// 가격 입력 포맷팅 (숫자 8자리 제한 + 쉼표 단위 구분)
-function setupPriceFormatter() {
-    const priceInput = document.getElementById('productPrice');
-    if (!priceInput) return;
-
-    priceInput.addEventListener('input', (e) => {
-        // 숫자만 추출
-        let digits = e.target.value.replace(/[^0-9]/g, '');
-
-        if (!digits) {
-            if (e.target.value !== '') e.target.value = '';
-            return;
-        }
-
-        // 최대 8자리까지만 허용
-        if (digits.length > 8) {
-            digits = digits.slice(0, 8);
-        }
-
-        // 숫자 값으로 변환
-        const numeric = Number(digits);
-        if (Number.isNaN(numeric)) {
-            e.target.value = '';
-            return;
-        }
-
-        // 천 단위 콤마 포맷팅
-        const formatted = numeric.toLocaleString('ko-KR');
-        // 무한 루프 방지: 포맷된 값과 다를 때만 업데이트
-        if (e.target.value !== formatted) {
-            e.target.value = formatted;
-        }
-    });
-}
-
-// 가격 값 추출 (콤마 제거 후 숫자로 변환)
-function getPriceValue(priceInput) {
-    if (!priceInput || !priceInput.value) return null;
-    const numeric = priceInput.value.replace(/[^0-9]/g, '');
-    return numeric ? Number(numeric) : null;
 }
 
 // 세션 스토리지 데이터 파싱 (뒤로가기 후 재진입 시 사용)
@@ -136,7 +72,7 @@ async function loadProductData() {
         
         if (!productId) {
             Toast.error('상품 ID가 필요합니다.');
-            navigateTo('/marketplace');
+            navigateTo('/marketplace-list');
             return;
         }
         
@@ -155,7 +91,7 @@ async function loadProductData() {
             
             if (!productData) {
                 Toast.error('상품을 찾을 수 없습니다.');
-                navigateTo('/marketplace');
+                navigateTo('/marketplace-list');
                 return;
             }
         }
@@ -322,7 +258,7 @@ async function handlePostUpdate() {
         Toast.success('상품이 수정되었습니다.');
         // 성공 후 상세 페이지로 이동 (히스토리 교체하여 뒤로가기 방지)
         setTimeout(() => {
-            window.history.replaceState(null, '', '/marketplace');
+            window.history.replaceState(null, '', '/marketplace-list');
             navigateTo(`/marketplace-detail?id=${productId}`);
         }, 1200);
     } catch (error) {

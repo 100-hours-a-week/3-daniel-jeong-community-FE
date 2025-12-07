@@ -11,9 +11,78 @@ import { NAVIGATION_MENU, NAVIGATION_ACTIONS } from '../../utils/constants/navig
 const HOME_PATH = '/post-list';
 
 // 프로필 아이콘 렌더링
-function renderProfileIcon(icon, user) {
+async function renderProfileIcon(icon, user) {
     const profileImageKey = user?.profileImageKey || null;
-    renderProfileImage(icon, profileImageKey, '👤', user?.nickname || '프로필');
+    await renderProfileImage(icon, profileImageKey, '👤', user?.nickname || '프로필');
+}
+
+// 사용자 프로필 이미지 요소 생성
+async function createUserProfileImage(user, className = 'dropdown-profile-image') {
+    const profileImage = document.createElement('div');
+    profileImage.className = className;
+    await renderProfileIcon(profileImage, user);
+    return profileImage;
+}
+
+// 사용자 이름 요소 생성
+function createUserName(user, className = 'dropdown-user-name') {
+    const userName = document.createElement('div');
+    userName.className = className;
+    userName.textContent = `${user?.nickname || '사용자'}님`;
+    return userName;
+}
+
+// 사용자 이메일 요소 생성
+function createUserEmail(user, className = 'dropdown-user-email') {
+    const userEmail = document.createElement('div');
+    userEmail.className = className;
+    userEmail.textContent = user?.email || '';
+    return userEmail;
+}
+
+// 사용자 상세 정보 요소 생성
+function createUserDetails(user, detailsClassName = 'dropdown-user-details', nameClassName = 'dropdown-user-name', emailClassName = 'dropdown-user-email') {
+    const userDetails = document.createElement('div');
+    userDetails.className = detailsClassName;
+    
+    userDetails.appendChild(createUserName(user, nameClassName));
+    
+    if (user?.email) {
+        userDetails.appendChild(createUserEmail(user, emailClassName));
+    }
+    
+    return userDetails;
+}
+
+// 사용자 정보 섹션 생성
+async function createUserInfo(user, options = {}) {
+    const {
+        containerClassName = 'dropdown-user-info',
+        profileImageClassName = 'dropdown-profile-image',
+        detailsClassName = 'dropdown-user-details',
+        nameClassName = 'dropdown-user-name',
+        emailClassName = 'dropdown-user-email'
+    } = options;
+    
+    const userInfo = document.createElement('div');
+    userInfo.className = containerClassName;
+    
+    const profileImage = await createUserProfileImage(user, profileImageClassName);
+    userInfo.appendChild(profileImage);
+    userInfo.appendChild(createUserDetails(user, detailsClassName, nameClassName, emailClassName));
+    
+    return userInfo;
+}
+
+// 모바일 메뉴용 사용자 정보 생성
+async function createMobileUserInfo(user) {
+    return await createUserInfo(user, {
+        containerClassName: 'mobile-menu-user-info',
+        profileImageClassName: 'mobile-menu-profile-image',
+        detailsClassName: 'mobile-menu-user-details',
+        nameClassName: 'mobile-menu-user-name',
+        emailClassName: 'mobile-menu-user-email'
+    });
 }
 
 // 로그아웃 후 페이지 이동 처리
@@ -57,62 +126,13 @@ function createDropdownMenuItem(action, text, className = '') {
     return item;
 }
 
-// 드롭다운 사용자 정보 섹션 생성
-function createDropdownUserInfo(user) {
-    const userInfo = document.createElement('div');
-    userInfo.className = 'dropdown-user-info';
-    
-    userInfo.appendChild(createUserProfileImage(user));
-    userInfo.appendChild(createUserDetails(user));
-    
-    return userInfo;
-}
-
-// 사용자 프로필 이미지 생성
-function createUserProfileImage(user) {
-    const profileImage = document.createElement('div');
-    profileImage.className = 'dropdown-profile-image';
-    renderProfileIcon(profileImage, user);
-    return profileImage;
-}
-
-// 사용자 상세 정보 생성
-function createUserDetails(user) {
-    const userDetails = document.createElement('div');
-    userDetails.className = 'dropdown-user-details';
-    
-    userDetails.appendChild(createUserName(user));
-    
-    if (user?.email) {
-        userDetails.appendChild(createUserEmail(user));
-    }
-    
-    return userDetails;
-}
-
-// 사용자 이름 생성
-function createUserName(user) {
-    const userName = document.createElement('div');
-    userName.className = 'dropdown-user-name';
-    userName.textContent = `${user?.nickname || '사용자'}님`;
-    return userName;
-}
-
-// 사용자 이메일 생성
-function createUserEmail(user) {
-    const userEmail = document.createElement('div');
-    userEmail.className = 'dropdown-user-email';
-    userEmail.textContent = user?.email || '';
-    return userEmail;
-}
-
 // 프로필 드롭다운 메뉴 생성 및 이벤트 바인딩
-function createDropdownMenu(userProfile, isLoggedIn, user) {
+async function createDropdownMenu(userProfile, isLoggedIn, user) {
     const dropdown = document.createElement('div');
     dropdown.className = 'profile-dropdown';
     
     if (isLoggedIn && user) {
-        populateLoggedInDropdown(dropdown, user);
+        await populateLoggedInDropdown(dropdown, user);
     } else {
         populateLoggedOutDropdown(dropdown);
     }
@@ -123,9 +143,10 @@ function createDropdownMenu(userProfile, isLoggedIn, user) {
 }
 
 // 로그인 상태 드롭다운 구성
-function populateLoggedInDropdown(dropdown, user) {
+async function populateLoggedInDropdown(dropdown, user) {
     dropdown.classList.add('has-user-info');
-    dropdown.appendChild(createDropdownUserInfo(user));
+    const userInfo = await createUserInfo(user);
+    dropdown.appendChild(userInfo);
     dropdown.appendChild(createDropdownDivider());
     dropdown.appendChild(createDropdownMenuItem('user-edit', '회원정보수정'));
     dropdown.appendChild(createDropdownMenuItem('password-edit', '비밀번호수정'));
@@ -227,6 +248,7 @@ class AppHeader extends HTMLElement {
     constructor() {
         super();
         this.onBack = this.onBack.bind(this);
+        this.closeMobileMenuHandler = null;
     }
 
     connectedCallback() { 
@@ -254,6 +276,12 @@ class AppHeader extends HTMLElement {
     
     // 헤더 비동기 렌더링
     async renderAsync() {
+        // 이전 리스너 정리
+        if (this.closeMobileMenuHandler) {
+            document.removeEventListener('click', this.closeMobileMenuHandler);
+            this.closeMobileMenuHandler = null;
+        }
+        
         const showBack = this.hasAttribute('show-back');
         const showProfile = this.hasAttribute('show-profile');
         const showMenu = this.getAttribute('show-menu') !== 'false';
@@ -300,7 +328,7 @@ class AppHeader extends HTMLElement {
 
         // 모바일 메뉴
         if (showMenu) {
-            const mobileMenu = this.createMobileMenu(activePath);
+            const mobileMenu = await this.createMobileMenu(activePath);
             nav.appendChild(mobileMenu);
         }
 
@@ -376,9 +404,9 @@ class AppHeader extends HTMLElement {
         const userProfile = document.createElement('div');
         userProfile.className = 'user-profile';
         
-        const icon = this.createProfileIcon(user);
+        const icon = await this.createProfileIcon(user);
         userProfile.appendChild(icon);
-        createDropdownMenu(userProfile, true, user);
+        await createDropdownMenu(userProfile, true, user);
         
         return userProfile;
     }
@@ -386,11 +414,27 @@ class AppHeader extends HTMLElement {
     /**
      * 프로필 아이콘 생성
      */
-    createProfileIcon(user) {
+    async createProfileIcon(user) {
         const icon = document.createElement('div');
         icon.className = 'profile-icon';
-        renderProfileIcon(icon, user);
+        await renderProfileIcon(icon, user);
         return icon;
+    }
+
+    /**
+     * 모바일 메뉴 닫기
+     */
+    closeMobileMenu() {
+        const mobileMenu = this.querySelector('.mobile-menu');
+        const toggle = this.querySelector('.nav-mobile-toggle');
+        
+        if (mobileMenu) mobileMenu.classList.remove('active');
+        if (toggle) toggle.classList.remove('active');
+        
+        if (this.closeMobileMenuHandler) {
+            document.removeEventListener('click', this.closeMobileMenuHandler);
+            this.closeMobileMenuHandler = null;
+        }
     }
 
     /**
@@ -401,17 +445,34 @@ class AppHeader extends HTMLElement {
         toggle.className = 'nav-mobile-toggle';
         toggle.id = 'mobileMenuBtn';
         toggle.setAttribute('aria-label', '메뉴');
+        toggle.type = 'button';
 
         for (let i = 0; i < 3; i++) {
             const span = document.createElement('span');
             toggle.appendChild(span);
         }
 
-        toggle.addEventListener('click', () => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
             const mobileMenu = this.querySelector('.mobile-menu');
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('active');
-                toggle.classList.toggle('active');
+            if (!mobileMenu) return;
+            
+            const isActive = mobileMenu.classList.contains('active');
+            mobileMenu.classList.toggle('active');
+            toggle.classList.toggle('active');
+            
+            if (!isActive) {
+                // 외부 클릭 시 메뉴 닫기
+                this.closeMobileMenuHandler = (event) => {
+                    if (!mobileMenu.contains(event.target) && !toggle.contains(event.target)) {
+                        this.closeMobileMenu();
+                    }
+                };
+                setTimeout(() => document.addEventListener('click', this.closeMobileMenuHandler), 0);
+            } else {
+                this.closeMobileMenu();
             }
         });
 
@@ -421,12 +482,23 @@ class AppHeader extends HTMLElement {
     /**
      * 모바일 메뉴 생성
      */
-    createMobileMenu(activePath) {
+    async createMobileMenu(activePath) {
         const mobileMenu = document.createElement('div');
         mobileMenu.className = 'mobile-menu';
 
         const content = document.createElement('div');
         content.className = 'mobile-menu-content';
+
+        const user = getUserFromStorage();
+        if (user) {
+            // 로그인 상태: 프로필 정보를 맨 위에 표시
+            const userInfo = await createMobileUserInfo(user);
+            content.appendChild(userInfo);
+            
+            const divider = document.createElement('div');
+            divider.className = 'mobile-menu-divider';
+            content.appendChild(divider);
+        }
 
         NAVIGATION_MENU.forEach(item => {
             const link = document.createElement('a');
@@ -436,40 +508,25 @@ class AppHeader extends HTMLElement {
                 link.classList.add('active');
             }
             link.textContent = item.label;
+            link.addEventListener('click', () => this.closeMobileMenu());
             content.appendChild(link);
         });
 
-        const divider = document.createElement('div');
-        divider.className = 'mobile-menu-divider';
-
-        const user = getUserFromStorage();
         if (user) {
-            // 로그인 상태: 프로필 정보 및 메뉴 표시
-            const userInfo = document.createElement('div');
-            userInfo.className = 'mobile-menu-user-info';
-            
-            const userName = document.createElement('div');
-            userName.className = 'mobile-menu-user-name';
-            userName.textContent = `${user.nickname || '사용자'}님`;
-            
-            const userEmail = document.createElement('div');
-            userEmail.className = 'mobile-menu-user-email';
-            userEmail.textContent = user.email || '';
-            
-            userInfo.appendChild(userName);
-            userInfo.appendChild(userEmail);
-            content.appendChild(userInfo);
+            const divider = document.createElement('div');
+            divider.className = 'mobile-menu-divider';
             content.appendChild(divider);
-            
             const userEditLink = document.createElement('a');
             userEditLink.href = '/user-edit';
             userEditLink.className = 'mobile-menu-link';
             userEditLink.textContent = '회원정보수정';
+            userEditLink.addEventListener('click', () => this.closeMobileMenu());
             
             const passwordEditLink = document.createElement('a');
             passwordEditLink.href = '/password-edit';
             passwordEditLink.className = 'mobile-menu-link';
             passwordEditLink.textContent = '비밀번호수정';
+            passwordEditLink.addEventListener('click', () => this.closeMobileMenu());
             
             content.appendChild(userEditLink);
             content.appendChild(passwordEditLink);
@@ -481,6 +538,7 @@ class AppHeader extends HTMLElement {
             logoutLink.textContent = '로그아웃';
             logoutLink.addEventListener('click', (e) => {
                 e.preventDefault();
+                this.closeMobileMenu();
                 new Modal({
                     title: MODAL_MESSAGE.TITLE_LOGOUT,
                     subtitle: MODAL_MESSAGE.SUBTITLE_LOGOUT,
@@ -492,15 +550,20 @@ class AppHeader extends HTMLElement {
             content.appendChild(logoutLink);
         } else {
             // 로그아웃 상태: 로그인/회원가입 링크 표시
+            const divider = document.createElement('div');
+            divider.className = 'mobile-menu-divider';
+            
             const loginLink = document.createElement('a');
             loginLink.href = NAVIGATION_ACTIONS.LOGIN.path;
             loginLink.className = 'mobile-menu-link';
             loginLink.textContent = NAVIGATION_ACTIONS.LOGIN.label;
+            loginLink.addEventListener('click', () => this.closeMobileMenu());
 
             const signupLink = document.createElement('a');
             signupLink.href = NAVIGATION_ACTIONS.SIGNUP.path;
             signupLink.className = 'mobile-menu-link';
             signupLink.textContent = NAVIGATION_ACTIONS.SIGNUP.label;
+            signupLink.addEventListener('click', () => this.closeMobileMenu());
 
             content.appendChild(divider);
             content.appendChild(loginLink);
@@ -512,7 +575,7 @@ class AppHeader extends HTMLElement {
     }
 
     /**
-     * 헤더 이벤트 초기화 (스크롤 효과 등)
+     * 헤더 이벤트 초기화
      */
     initHeaderEvents() {
         // 네비게이션 스크롤 효과
@@ -534,8 +597,8 @@ class AppHeader extends HTMLElement {
                     nav.style.background = 'rgba(12, 74, 110, 0.85)';
                     nav.style.borderBottomColor = 'rgba(255, 255, 255, 0.15)';
                 } else {
-                    nav.style.background = 'var(--theme-card-bg-light)';
-                    nav.style.borderBottomColor = 'var(--theme-border-light)';
+                    nav.style.background = 'var(--card-bg-light)';
+                    nav.style.borderBottomColor = 'var(--border-light)';
                 }
             }, 50);
         };

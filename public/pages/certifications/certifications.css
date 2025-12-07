@@ -22,7 +22,7 @@
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     margin-bottom: 16px;
 }
 
@@ -57,7 +57,7 @@
     padding: 32px;
     display: flex;
     flex-direction: column;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
 }
 
 .cert-card:hover {
@@ -74,7 +74,7 @@
 .cert-icon {
     width: 56px;
     height: 56px;
-    border-radius: var(--lg-radius-lg);
+    border-radius: var(--border-radius-lg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,8 +87,8 @@
 }
 
 .cert-icon-coach {
-    background: linear-gradient(135deg, var(--lg-primary) 0%, var(--lg-secondary) 100%);
-    box-shadow: var(--lg-button-shadow-lg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    box-shadow: var(--button-shadow-lg);
 }
 
 .cert-icon-lifeguard {
@@ -121,8 +121,8 @@
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    border-radius: var(--lg-radius-full);
-    background: linear-gradient(135deg, var(--lg-primary) 0%, var(--lg-secondary) 100%);
+    border-radius: var(--border-radius-full);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: white;
 }
 
@@ -165,15 +165,15 @@
 }
 
 .detail-section {
-    background: var(--lg-glass-bg);
-    border-radius: var(--lg-radius-md);
+    background: var(--glass-bg);
+    border-radius: var(--border-radius-md);
     padding: 16px;
 }
 
 .detail-title {
     font-size: 13px;
     font-weight: 600;
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     margin-bottom: 10px;
     letter-spacing: 0.5px;
 }
@@ -202,7 +202,7 @@
     top: 8px;
     width: 4px;
     height: 4px;
-    background: var(--lg-primary-light);
+    background: var(--primary-light);
     border-radius: 50%;
 }
 
@@ -213,18 +213,18 @@
 .cert-footer {
     margin-top: auto;
     padding-top: 16px;
-    border-top: 1px solid var(--lg-glass-border);
+    border-top: 1px solid var(--glass-border);
 }
 
 .cert-link {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
-    transition: all var(--lg-transition-fast);
+    transition: all var(--transition-fast);
 }
 
 .cert-link svg {
@@ -233,7 +233,7 @@
 }
 
 .cert-link:hover {
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
 }
 
 /* INFO SECTION */
@@ -257,15 +257,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--lg-glass-bg);
-    border-radius: var(--lg-radius-lg);
+    background: var(--glass-bg);
+    border-radius: var(--border-radius-lg);
     flex-shrink: 0;
 }
 
 .info-icon svg {
     width: 24px;
     height: 24px;
-    stroke: var(--lg-icon-color);
+    stroke: var(--icon-color);
 }
 
 .info-content {
@@ -286,7 +286,7 @@
 }
 
 .info-desc a {
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     text-decoration: none;
     font-weight: 500;
 }

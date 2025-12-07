@@ -7,7 +7,7 @@ export const NAVIGATION_MENU = [
     { path: '/competitions', label: '대회일정' },
     { path: '/certifications', label: '자격증' },
     { path: '/brands', label: '브랜드' },
-    { path: '/marketplace', label: '중고거래' },
+    { path: '/marketplace-list', label: '중고거래' },
     { path: '/pool-finder', label: '수영장 위치 찾기' }
 ];
 

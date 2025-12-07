@@ -29,8 +29,8 @@
     align-items: center;
     gap: var(--spacing-sm);
     padding: var(--spacing-xl) var(--spacing-md);
-    background: var(--theme-input-bg);
-    border: 2px solid var(--theme-border);
+    background: var(--input-bg);
+    border: 2px solid var(--border);
     border-radius: var(--border-radius-lg);
     transition: var(--transition-normal);
 }
@@ -38,35 +38,35 @@
 .category-content svg {
     width: 32px;
     height: 32px;
-    stroke: var(--theme-text-light);
+    stroke: var(--text-light);
     transition: var(--transition-normal);
 }
 
 .category-content span {
     font-size: 14px;
     font-weight: 500;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
     transition: var(--transition-normal);
 }
 
 .category-item:hover .category-content {
-    background: var(--theme-card-hover-bg);
-    border-color: var(--theme-accent);
+    background: var(--card-hover-bg);
+    border-color: var(--accent);
     transform: translateY(-2px);
 }
 
 .category-item input[type="radio"]:checked + .category-content {
-    background: var(--theme-button-primary-bg);
-    border-color: var(--theme-accent);
+    background: var(--button-primary-bg);
+    border-color: var(--accent);
     box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
 }
 
 .category-item input[type="radio"]:checked + .category-content svg {
-    stroke: var(--white);
+    stroke: var(--text-on-glass);
 }
 
 .category-item input[type="radio"]:checked + .category-content span {
-    color: var(--white);
+    color: var(--text-on-glass);
     font-weight: 600;
 }
 
@@ -87,7 +87,7 @@
     right: var(--spacing-lg);
     font-size: 16px;
     font-weight: 600;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     pointer-events: none;
 }
 
@@ -100,7 +100,7 @@
 
 /* 숫자 입력 필드 스피너 제거 */
 .price-wrapper input[type="number"] {
-    -moz-appearance: textfield;
+    appearance: textfield;
 }
 
 /* INFO SECTION */
@@ -115,8 +115,8 @@
     background: rgba(255, 193, 7, 0.1);
     border: 1px solid rgba(255, 193, 7, 0.3);
     border-radius: var(--border-radius-lg);
-    backdrop-filter: blur(var(--lg-blur-md));
-    -webkit-backdrop-filter: blur(var(--lg-blur-md));
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
 }
 
 .info-box svg {
@@ -131,7 +131,7 @@
     display: block;
     font-size: 14px;
     font-weight: 600;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
     margin-bottom: var(--spacing-md);
 }
 
@@ -143,7 +143,7 @@
 
 .info-box li {
     font-size: 13px;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
     line-height: 1.6;
     padding-left: var(--spacing-lg);
     position: relative;
@@ -187,18 +187,18 @@
     align-items: center;
     justify-content: center;
     padding: var(--spacing-lg) var(--spacing-xl);
-    background: var(--theme-input-bg);
-    border: 2px solid var(--theme-border);
+    background: var(--input-bg);
+    border: 2px solid var(--border);
     border-radius: var(--border-radius-lg);
     font-size: 15px;
     font-weight: 600;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
     transition: var(--transition-normal);
 }
 
 .status-item:hover .status-content {
-    background: var(--theme-card-hover-bg);
-    border-color: var(--theme-accent);
+    background: var(--card-hover-bg);
+    border-color: var(--accent);
     transform: translateY(-2px);
 }
 
@@ -221,26 +221,26 @@
 
 /* 예약중 */
 .status-reserved {
-    color: var(--green);
-    border-color: var(--green);
+    color: var(--success);
+    border-color: var(--success);
 }
 
 .status-item input[type="radio"]:checked + .status-content.status-reserved {
     background: var(--success-bg-light);
-    border-color: var(--green);
-    color: var(--green);
+    border-color: var(--success);
+    color: var(--success);
 }
 
 /* 거래완료 */
 .status-sold {
-    color: var(--white);
+    color: var(--text-on-glass);
     border-color: rgba(255, 255, 255, 0.5);
 }
 
 .status-item input[type="radio"]:checked + .status-content.status-sold {
     background: rgba(255, 255, 255, 0.2);
     border-color: rgba(255, 255, 255, 0.5);
-    color: var(--white);
+    color: var(--text-on-glass);
 }
 
 /* RESPONSIVE */

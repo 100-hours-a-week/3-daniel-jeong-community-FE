@@ -15,13 +15,13 @@
 
 /* 폼 스타일 */
 .post-form {
-    background: var(--theme-card-bg);
-    backdrop-filter: blur(var(--lg-blur-lg));
-    -webkit-backdrop-filter: blur(var(--lg-blur-lg));
+    background: var(--card-bg);
+    backdrop-filter: blur(var(--blur-lg));
+    -webkit-backdrop-filter: blur(var(--blur-lg));
     border-radius: var(--border-radius-xl);
     padding: var(--spacing-3xl);
-    box-shadow: var(--theme-shadow);
-    border: 1px solid var(--theme-border);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
     position: relative;
     overflow: hidden;
 }
@@ -52,13 +52,13 @@
     right: var(--spacing-lg);
     transform: translateY(-50%);
     font-size: 14px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     font-weight: 500;
     pointer-events: none;
 }
 
 .char-counter.warning {
-    color: var(--red);
+    color: var(--danger);
     font-weight: 600;
 }
 
@@ -74,28 +74,28 @@
 }
 
 .image-upload-area {
-    border: 2px dashed var(--theme-border);
+    border: 2px dashed var(--border);
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-3xl);
     text-align: center;
     cursor: pointer;
     transition: var(--transition-normal);
-    background: var(--theme-input-bg);
-    backdrop-filter: blur(var(--lg-blur-md));
-    -webkit-backdrop-filter: blur(var(--lg-blur-md));
+    background: var(--input-bg);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
     position: relative;
     overflow: hidden;
 }
 
 .image-upload-area:hover {
-    border-color: var(--theme-accent);
-    background: var(--theme-card-hover-bg);
+    border-color: var(--accent);
+    background: var(--card-hover-bg);
     transform: translateY(-2px);
 }
 
 .image-upload-area.dragover {
-    border-color: var(--theme-accent);
-    background: var(--theme-card-hover-bg);
+    border-color: var(--accent);
+    background: var(--card-hover-bg);
     transform: scale(1.02);
 }
 
@@ -120,31 +120,31 @@
 .upload-title {
     font-size: 16px;
     font-weight: 600;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
 }
 
 .upload-subtitle {
     font-size: 14px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     font-weight: 500;
 }
 
 /* 이미지 카운트 */
 .image-count {
     font-size: 14px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     font-weight: 500;
 }
 
 /* 이미지 갤러리 */
 .image-gallery {
     margin-top: var(--spacing-lg);
-    background: var(--theme-input-bg);
-    backdrop-filter: blur(var(--lg-blur-md));
-    -webkit-backdrop-filter: blur(var(--lg-blur-md));
+    background: var(--input-bg);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
     border-radius: var(--border-radius-lg);
     padding: var(--spacing-lg);
-    border: 1px solid var(--theme-border);
+    border: 1px solid var(--border);
 }
 
 .gallery-header {
@@ -157,13 +157,13 @@
 .gallery-title {
     font-size: 14px;
     font-weight: 600;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
 }
 
 .gallery-count {
     font-size: 12px;
-    color: var(--theme-text-light);
-    background: var(--theme-card-bg);
+    color: var(--text-light);
+    background: var(--card-bg);
     padding: var(--spacing-xs) var(--spacing-sm);
     border-radius: var(--border-radius-sm);
     font-weight: 500;
@@ -180,17 +180,17 @@
     position: relative;
     border-radius: var(--border-radius-md);
     overflow: hidden;
-    box-shadow: var(--theme-shadow);
+    box-shadow: var(--shadow);
     aspect-ratio: 1;
-    background: var(--theme-card-bg);
-    border: 2px solid var(--theme-border);
+    background: var(--card-bg);
+    border: 2px solid var(--border);
     transition: var(--transition-normal);
 }
 
 .image-preview-item:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    border-color: var(--theme-accent);
+    border-color: var(--accent);
 }
 
 .image-preview-item img {
@@ -208,7 +208,7 @@
     height: 24px;
     border-radius: 50%;
     background: rgba(239, 68, 68, 0.9);
-    color: var(--white);
+    color: var(--text-on-glass);
     border: none;
     font-size: 14px;
     font-weight: bold;
@@ -226,7 +226,7 @@
 }
 
 .image-preview-item .remove-image:hover {
-    background: var(--red);
+    background: var(--danger);
     transform: scale(1.1);
 }
 
@@ -235,8 +235,8 @@
     position: absolute;
     top: var(--spacing-xs);
     left: var(--spacing-xs);
-    background: var(--theme-accent);
-    color: var(--white);
+    background: var(--accent);
+    color: var(--text-on-glass);
     font-size: 12px;
     font-weight: 600;
     padding: var(--spacing-xs) var(--spacing-sm);
@@ -248,14 +248,14 @@
 .form-actions {
     margin-top: var(--spacing-3xl);
     padding-top: var(--spacing-2xl);
-    border-top: 1px solid var(--theme-border);
+    border-top: 1px solid var(--border);
 }
 
 .submit-btn {
     width: 100%;
     padding: var(--spacing-lg) var(--spacing-2xl);
-    background: var(--theme-button-primary-bg);
-    color: var(--white);
+    background: var(--button-primary-bg);
+    color: var(--text-on-glass);
     border: none;
     border-radius: var(--border-radius-lg);
     font-size: 16px;
@@ -271,7 +271,7 @@
 
 .submit-btn:not(:disabled):hover {
     transform: translateY(-2px);
-    background: var(--theme-button-primary-hover-bg);
+    background: var(--button-primary-hover-bg);
     box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
 }
 
@@ -280,8 +280,8 @@
 }
 
 .submit-btn:disabled {
-    background: var(--theme-input-bg);
-    color: var(--theme-text-light);
+    background: var(--input-bg);
+    color: var(--text-light);
     cursor: not-allowed;
     transform: none;
     box-shadow: none;

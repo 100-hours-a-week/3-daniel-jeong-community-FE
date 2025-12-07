@@ -4,27 +4,27 @@
     align-items: center;
     gap: 8px;
     padding: 6px 16px 6px 6px;
-    background: var(--lg-glass-bg);
-    border: 1px solid var(--lg-glass-border);
-    border-radius: var(--lg-radius-full);
-    color: var(--lg-text-on-glass);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-full);
+    color: var(--text-on-glass);
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
     text-decoration: none;
 }
 
 .nav-profile-btn:hover {
-    background: var(--lg-glass-bg-hover);
-    border-color: var(--lg-glass-border-light);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-light);
 }
 
 .nav-profile-avatar {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: var(--lg-primary);
+    background: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -65,7 +65,7 @@
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     margin-bottom: 16px;
 }
 
@@ -122,15 +122,15 @@
     align-items: center;
     gap: 8px;
     padding: 12px 24px;
-    background: linear-gradient(135deg, var(--lg-primary) 0%, var(--lg-secondary) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     border: none;
-    border-radius: var(--lg-radius-full);
+    border-radius: var(--border-radius-full);
     color: white;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--lg-transition-normal);
-    box-shadow: var(--lg-button-shadow);
+    transition: all var(--transition-normal);
+    box-shadow: var(--button-shadow);
 }
 
 .write-btn-icon {
@@ -142,7 +142,7 @@
 
 .write-btn:hover {
     transform: translateY(-2px);
-    box-shadow: var(--lg-button-shadow-hover);
+    box-shadow: var(--button-shadow-hover);
 }
 
 /* 게시글 섹션 */
@@ -163,23 +163,23 @@
     display: flex;
     flex-direction: column;
     padding: 24px;
-    background: var(--lg-card-bg);
-    backdrop-filter: blur(var(--lg-blur-lg));
-    -webkit-backdrop-filter: blur(var(--lg-blur-lg));
-    border: var(--lg-card-border);
-    border-radius: var(--lg-radius-xl);
-    box-shadow: var(--lg-card-shadow);
+    background: var(--card-bg);
+    backdrop-filter: blur(var(--blur-lg));
+    -webkit-backdrop-filter: blur(var(--blur-lg));
+    border: var(--card-border);
+    border-radius: var(--border-radius-xl);
+    box-shadow: var(--card-shadow);
     cursor: pointer;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
     text-decoration: none;
 }
 
 .post-card:hover {
     transform: translateY(-4px);
     box-shadow: 
-        var(--lg-card-shadow),
+        var(--card-shadow),
         0 12px 40px rgba(0, 0, 0, 0.15);
-    border-color: var(--lg-glass-border-light);
+    border-color: var(--glass-border-light);
 }
 
 .post-header {
@@ -236,19 +236,19 @@
     align-items: center;
     gap: 10px;
     padding-top: 16px;
-    border-top: 1px solid var(--lg-glass-border);
+    border-top: 1px solid var(--glass-border);
 }
 
 .author-avatar {
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: var(--lg-glass-bg);
+    background: var(--glass-bg);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 13px;
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     font-weight: 600;
     overflow: hidden;
 }
