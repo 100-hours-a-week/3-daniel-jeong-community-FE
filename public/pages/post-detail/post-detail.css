@@ -10,15 +10,14 @@
     z-index: var(--z-content);
 }
 
-/* 게시글 상세 페이지 전용 컨테이너 - common.css의 .container 스타일 오버라이드 */
-.container {
+/* 게시글 상세 페이지 전용 컨테이너 */
+.main .container {
     width: 100%;
     max-width: 700px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-3xl);
-    /* common.css의 .container 스타일 제거 */
     background: transparent;
     backdrop-filter: none;
     border-radius: 0;
@@ -29,7 +28,7 @@
     overflow: visible;
 }
 
-.container::before {
+.main .container::before {
     display: none;
 }
 
@@ -626,7 +625,7 @@
         padding: var(--spacing-2xl) var(--spacing-lg);
     }
     
-    .container {
+    .main .container {
         gap: var(--spacing-2xl);
     }
     
