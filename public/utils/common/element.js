@@ -124,3 +124,67 @@ export function toggleLoadingIndicator(indicator, show) {
     indicator.style.display = show ? 'flex' : 'none';
 }
 
+// 위치 입력 글자수 카운터 설정
+export function setupLocationCharCounter(locationInput, locationCounter, options = {}) {
+    const { maxLength = 26, warningThreshold = 24 } = options;
+    
+    if (!locationInput || !locationCounter) return;
+    
+    locationCounter.textContent = locationInput.value.length;
+    const charCounterParent = locationCounter.parentElement;
+    
+    locationInput.addEventListener('input', () => {
+        // 최대 길이 제한
+        if (locationInput.value.length > maxLength) {
+            locationInput.value = locationInput.value.substring(0, maxLength);
+        }
+        
+        const count = locationInput.value.length;
+        locationCounter.textContent = count;
+        // 경고 임계값 이상일 때 경고 표시
+        charCounterParent?.classList.toggle('warning', count >= warningThreshold);
+    });
+}
+
+// 가격 입력 포맷터 설정 (숫자만 허용, 천 단위 콤마 자동 추가)
+export function setupPriceFormatter(priceInput, options = {}) {
+    const { maxDigits = 8 } = options;
+    
+    if (!priceInput) return;
+    
+    priceInput.addEventListener('input', (e) => {
+        // 숫자만 추출
+        let digits = e.target.value.replace(/[^0-9]/g, '');
+        
+        if (!digits) {
+            if (e.target.value !== '') e.target.value = '';
+            return;
+        }
+        
+        // 최대 자리수 제한
+        if (digits.length > maxDigits) {
+            digits = digits.slice(0, maxDigits);
+        }
+        
+        const numeric = Number(digits);
+        if (Number.isNaN(numeric)) {
+            e.target.value = '';
+            return;
+        }
+        
+        // 천 단위 콤마 포맷팅
+        const formatted = numeric.toLocaleString('ko-KR');
+        // 무한 루프 방지: 포맷된 값과 다를 때만 업데이트
+        if (e.target.value !== formatted) {
+            e.target.value = formatted;
+        }
+    });
+}
+
+// 가격 값 추출 (콤마 제거 후 숫자로 변환)
+export function getPriceValue(priceInput) {
+    if (!priceInput || !priceInput.value) return null;
+    const numeric = priceInput.value.replace(/[^0-9]/g, '');
+    return numeric ? Number(numeric) : null;
+}
+
