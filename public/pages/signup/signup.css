@@ -12,7 +12,7 @@
 
 .signup-container {
     width: 100%;
-    max-width: 480px;
+    max-width: 450px;
     padding: 40px 24px;
 }
 
@@ -49,19 +49,19 @@
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    background: var(--theme-input-bg);
-    border: 3px dashed var(--theme-border);
+    background: var(--input-bg);
+    border: 3px dashed var(--border);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     cursor: pointer;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
 }
 
 .profile-image:hover {
-    border-color: var(--theme-accent);
-    background: var(--theme-card-hover-bg);
+    border-color: var(--accent);
+    background: var(--card-hover-bg);
     transform: scale(1.05);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
@@ -96,8 +96,8 @@
 .btn-remove-image {
     padding: var(--spacing-sm) var(--spacing-lg);
     background: rgba(239, 68, 68, 0.1);
-    color: var(--red);
-    border: 1px solid var(--red);
+    color: var(--danger);
+    border: 1px solid var(--danger);
     border-radius: var(--border-radius-md);
     font-size: 14px;
     font-weight: 600;
@@ -149,18 +149,18 @@
     height: 20px;
     stroke: rgba(255, 255, 255, 0.4);
     pointer-events: none;
-    transition: stroke var(--lg-transition-fast);
+    transition: stroke var(--transition-fast);
 }
 
 .form-input {
     width: 100%;
     padding: 14px 16px 14px 48px;
-    background: var(--lg-glass-bg);
-    border: 1px solid var(--lg-glass-border);
-    border-radius: var(--lg-radius-md);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-md);
     color: white;
     font-size: 15px;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
 }
 
 .form-input::placeholder {
@@ -169,14 +169,14 @@
 
 .form-input:focus {
     outline: none;
-    background: var(--lg-glass-bg-hover);
-    border-color: var(--lg-primary);
-    box-shadow: var(--lg-focus-shadow);
+    background: var(--glass-bg-hover);
+    border-color: var(--primary);
+    box-shadow: var(--focus-shadow);
 }
 
 .form-input:focus + .input-icon,
 .input-wrapper:focus-within .input-icon {
-    stroke: var(--lg-icon-color);
+    stroke: var(--icon-color);
 }
 
 
@@ -193,32 +193,32 @@
     padding: 14px 24px;
     font-size: 15px;
     font-weight: 600;
-    border-radius: var(--lg-radius-md);
+    border-radius: var(--border-radius-md);
     cursor: pointer;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
     border: none;
 }
 
 .button-group .btn-primary {
-    background: linear-gradient(135deg, var(--lg-primary) 0%, var(--lg-secondary) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: white;
-    box-shadow: var(--lg-button-shadow);
+    box-shadow: var(--button-shadow);
 }
 
 .button-group .btn-primary:hover {
-    box-shadow: var(--lg-button-shadow-hover);
+    box-shadow: var(--button-shadow-hover);
     transform: translateY(-2px);
 }
 
 .button-group .btn-secondary {
-    background: var(--lg-glass-bg);
+    background: var(--glass-bg);
     color: white;
-    border: 1px solid var(--lg-glass-border);
+    border: 1px solid var(--glass-border);
 }
 
 .button-group .btn-secondary:hover {
-    background: var(--lg-glass-bg-hover);
-    border-color: var(--lg-glass-border-light);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-light);
 }
 
 /* 회원가입 푸터 */
@@ -229,7 +229,7 @@
     gap: 8px;
     margin-top: 32px;
     padding-top: 24px;
-    border-top: 1px solid var(--lg-glass-border);
+    border-top: 1px solid var(--glass-border);
 }
 
 .signup-footer-text {
@@ -240,13 +240,13 @@
 .login-link {
     font-size: 14px;
     font-weight: 600;
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     text-decoration: none;
-    transition: color var(--lg-transition-fast);
+    transition: color var(--transition-fast);
 }
 
 .login-link:hover {
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
 }
 
 /* 반응형 */

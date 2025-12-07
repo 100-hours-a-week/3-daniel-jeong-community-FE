@@ -1,86 +1,35 @@
 /* 공통 CSS 변수 및 기본 스타일 */
 
-/* Modal CSS - 공통으로 로드 */
+/* 모달 컴포넌트 스타일 */
 @import url('../components/modal/modal.css');
 
-/* Header CSS - 공통으로 로드 */
+/* 헤더 컴포넌트 스타일 */
 @import url('../components/header/header.css');
 
-/* Bubble Animation CSS */
+/* 버블 애니메이션 스타일 */
 @import url('../assets/animations/bubble-animation.css');
 
 :root {
-    /* 색상 */
-    --primary-color: #3b82f6;
-    --primary-hover: #2563eb;
-    --text-primary: #1e293b;
-    --text-secondary: #64748b;
-    --text-muted: #8b95a1;
-    --background-primary: #f8fafc;
-    --background-secondary: #e2e8f0;
-    --background-tertiary: #cbd5e1;
-    --white: #ffffff;
-    --border-light: rgba(0, 0, 0, 0.08);
-    --border-primary: rgba(59, 130, 246, 0.2);
-    
-    /* 추가 색상 (페이지별로 필요한 경우) */
-    --purple: #8b5cf6;
-    --purple-hover: #7c3aed;
-    --red: #ef4444;
-    --red-hover: #dc2626;
-    --green: #10b981;
-    --green-hover: #059669;
+    /* 추가 색상 */
+    --danger: #ef4444;
+    --danger-hover: #dc2626;
+    --success: #10b981;
     --warning: #f59e0b;
-    --toast-bg: rgba(255, 255, 255, 0.95);
     --toast-shadow: 0 8px 32px rgba(59, 130, 246, 0.2), 0 2px 8px rgba(0, 0, 0, 0.08);
-    --toast-close-hover-bg: rgba(0, 0, 0, 0.1);
-    --card-border: rgba(255, 255, 255, 0.2);
-    --card-divider: rgba(255, 255, 255, 0.8);
-    --input-bg: rgba(255, 255, 255, 0.8);
-    --input-focus-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-    --input-focus-shadow-lg: 0 0 0 4px rgba(59, 130, 246, 0.15);
-    --input-autofill-shadow: 0 0 0 1000px var(--input-bg) inset;
-    --like-hover-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
-    --link-primary-light: #60a5fa;
-    --link-primary-light-hover: #93c5fd;
-    --link-danger-light: #f87171;
-    --link-danger-light-hover: #fca5a5;
     --disabled-bg: #95a5a6;
     --success-bg-light: rgba(16, 185, 129, 0.05);
-    --error-bg-light: rgba(239, 68, 68, 0.05);
+    --danger-bg-light: rgba(239, 68, 68, 0.05);
     --warning-bg-light: rgba(245, 158, 11, 0.05);
-    --primary-bg-light: rgba(59, 130, 246, 0.05);
-    --primary-bg-medium: rgba(59, 130, 246, 0.1);
-    --primary-bg-strong: rgba(59, 130, 246, 0.15);
     --primary-focus-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
-    --error-focus-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
-    --error-shadow-sm: 0 2px 8px rgba(239, 68, 68, 0.3);
-    --error-shadow-md: 0 4px 12px rgba(239, 68, 68, 0.4);
+    --danger-focus-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+    --danger-shadow-sm: 0 2px 8px rgba(239, 68, 68, 0.3);
+    --danger-shadow-md: 0 4px 12px rgba(239, 68, 68, 0.4);
     --dropdown-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-    --dropdown-hover-bg: linear-gradient(90deg, rgba(59, 130, 246, 0.06) 0%, rgba(59, 130, 246, 0.02) 100%);
-    --dropdown-active-bg: linear-gradient(90deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.04) 100%);
-    --dropdown-logout-hover-bg: linear-gradient(90deg, rgba(239, 68, 68, 0.08) 0%, rgba(239, 68, 68, 0.03) 100%);
-    --dropdown-logout-active-bg: linear-gradient(90deg, rgba(239, 68, 68, 0.12) 0%, rgba(239, 68, 68, 0.05) 100%);
     --user-info-gradient: linear-gradient(135deg, rgba(59, 130, 246, 0.10) 0%, rgba(99, 102, 241, 0.08) 25%, rgba(139, 92, 246, 0.10) 50%, rgba(236, 72, 153, 0.08) 75%, rgba(251, 191, 36, 0.06) 100%);
     --profile-shadow: 0 4px 12px rgba(59, 130, 246, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.8);
-    --remove-image-bg: rgba(0, 0, 0, 0.7);
     --button-click-bg: rgba(255, 255, 255, 0.2);
-    --post-form-border: rgba(255, 255, 255, 0.2);
-    --post-form-gradient: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
     --modal-overlay-bg: rgba(0, 0, 0, 0.5);
-    --modal-bg: white;
     --modal-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    --modal-header-border: #f0f0f0;
-    --modal-cancel-bg: #f8fafc;
-    --modal-cancel-hover-bg: #e2e8f0;
-    --modal-cancel-border: #e2e8f0;
-    
-    /* 크기 */
-    --border-radius-sm: 6px;
-    --border-radius-md: 12px;
-    --border-radius-lg: 16px;
-    --border-radius-xl: 24px;
-    --border-radius-full: 30px;
     
     /* 간격 */
     --spacing-xs: 4px;
@@ -104,67 +53,25 @@
     --font-size-2xl: 18px;
     --font-size-3xl: 20px;
     --font-size-4xl: 22px;
-    --font-size-5xl: 24px;
-    
-    /* 폰트 굵기 */
-    --font-weight-light: 300;
-    --font-weight-regular: 400;
-    --font-weight-medium: 500;
-    --font-weight-semibold: 600;
-    --font-weight-bold: 700;
-    --font-weight-extrabold: 800;
-    
-    /* 줄 간격 */
-    --line-height-tight: 1.1;
-    --line-height-relaxed: 1.7;
-    --line-height-extra-relaxed: 1.9;
-    
-    /* 글자 간격 */
-    --letter-spacing-tight: -0.03em;
-    --letter-spacing-normal: 0.03em;
-    --letter-spacing-wide: 0.1em;
-    --letter-spacing-extra-tight: 0.01em;
-    
-    /* 아이콘 크기 */
-    --icon-size-sm: 14px;
-    --icon-size-md: 16px;
-    --icon-size-lg: 18px;
-    --icon-size-xl: 22px;
-    --icon-size-2xl: 28px;
-    --icon-size-3xl: 32px;
     
     /* 프로필 이미지 크기 */
-    --profile-size-sm: 28px;
     --profile-size-md: 52px;
-    --profile-size-lg: 120px;
     --profile-size-nav: 44px;
-    
-    /* 버튼 크기 */
-    --btn-height-sm: 40px;
-    --btn-height-md: 48px;
-    --btn-height-lg: 56px;
-    
-    /* 컨테이너 크기 */
-    --container-max-width: 420px;
-    --header-container-offset: 350px;
     
     /* 그림자 */
     --shadow-xs: 0 1px 3px rgba(0, 0, 0, 0.1);
-    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 20px rgba(59, 130, 246, 0.3);
     --shadow-lg: 0 8px 30px rgba(59, 130, 246, 0.4);
-    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.1);
-    --shadow-bubble: 0 6px 20px rgba(0, 0, 0, 0.15);
     
     /* 애니메이션 */
-    --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     
     /* 레이아웃 */
     --header-height: 56px;
     
-    /* Z-Index 레이어별 관리 - 실제 사용되는 것만 유지 */
+    /* Z-Index 레이어별 관리 */
     --z-background: 1;
     --z-bubble: 2;
     --z-content: 100;
@@ -173,9 +80,104 @@
     --z-dropdown: 400;
     --z-mobile-menu: 999;
     --z-header: 1000;
-    --z-modal-backdrop: 2000;
     --z-modal: 2100;
     --z-toast: 2300;
+    
+    /* 기본 색상 */
+    --primary: #2563EB;
+    --primary-light: #3B82F6;
+    --secondary: #1D4ED8;
+    
+    /* 유리 효과 색상 */
+    --glass-bg: rgba(255, 255, 255, 0.18);
+    --glass-bg-hover: rgba(255, 255, 255, 0.25);
+    --glass-border: rgba(255, 255, 255, 0.35);
+    --glass-border-light: rgba(255, 255, 255, 0.45);
+    
+    /* 버튼 그림자 */
+    --button-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    --button-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.4);
+    --button-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+    --button-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
+    --focus-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+    
+    /* 표면 색상 */
+    --surface: rgba(255, 255, 255, 0.95);
+    
+    /* 텍스트 색상 */
+    --text-on-glass: #FFFFFF;
+    --text-dark: var(--text-on-glass);
+    --text-light: rgba(255, 255, 255, 0.9);
+    --text-muted: rgba(255, 255, 255, 0.8);
+    --text-disabled: rgba(255, 255, 255, 0.6);
+    --text-accent: var(--text-on-glass);
+    
+    /* 아이콘 색상 */
+    --icon-color: var(--text-on-glass);
+    
+    /* 폼 및 입력 필드 색상 */
+    --input-bg: rgba(255, 255, 255, 0.1);
+    --input-border: rgba(255, 255, 255, 0.3);
+    --input-focus-border: var(--primary-light);
+    
+    /* 카드 색상 */
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --card-bg-light: rgba(255, 255, 255, 0.01);
+    --card-hover-bg: rgba(255, 255, 255, 0.25);
+    --card-hover-bg-light: rgba(255, 255, 255, 0.15);
+    --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    
+    /* 테두리 */
+    --border: rgba(255, 255, 255, 0.25);
+    --border-light: rgba(255, 255, 255, 0.2);
+    
+    /* 그림자 */
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    
+    /* 강조 색상 */
+    --accent: var(--primary-light);
+    
+    /* 버튼 배경 */
+    --button-primary-bg: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    --button-primary-hover-bg: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+    
+    /* 모서리 둥글기 */
+    --border-radius-sm: 6px;
+    --border-radius-md: 12px;
+    --border-radius-lg: 16px;
+    --border-radius-xl: 24px;
+    --border-radius-full: 9999px;
+    
+    /* 블러 값 */
+    --blur-sm: 8px;
+    --blur-md: 16px;
+    --blur-lg: 24px;
+    --blur-xl: 40px;
+    
+    /* 배경 그라데이션 */
+    --bg-gradient-dark: linear-gradient(180deg,
+        #0F172A 0%,
+        #1E3A8A 50%,
+        #2563EB 100%);
+    
+    /* 물결 오버레이 그라데이션 */
+    --water-overlay-gradient: linear-gradient(
+        180deg,
+        rgba(12, 74, 110, 0.04) 0%,
+        rgba(14, 116, 144, 0.03) 30%,
+        rgba(8, 145, 178, 0.025) 60%,
+        rgba(6, 182, 212, 0.02) 100%
+    );
+    
+    /* 비디오 배경용 물결 오버레이 그라데이션 */
+    --water-overlay-video-gradient: linear-gradient(
+        180deg,
+        rgba(0, 0, 0, 0.06) 0%,
+        rgba(0, 0, 0, 0.04) 30%,
+        rgba(0, 0, 0, 0.03) 60%,
+        rgba(0, 0, 0, 0.02) 100%
+    );
+    
 }
 
 /* 기본 스타일 */
@@ -187,16 +189,14 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Noto Sans KR', sans-serif;
-    background: linear-gradient(135deg, var(--background-primary) 0%, var(--background-secondary) 50%, var(--background-tertiary) 100%);
-    color: var(--text-primary);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+    color: var(--text-dark);
     line-height: 1.5;
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
     transition: background 0.3s ease, color 0.3s ease;
 }
-
-
 
 /* 공통 애니메이션 */
 @keyframes fadeIn {
@@ -219,8 +219,6 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-
-
 /* 페이지 공통 레이아웃 스타일 */
 
 /* 메인 컨텐츠 영역 */
@@ -235,20 +233,26 @@ body {
 /* 공통 컨테이너 */
 .container {
     width: 100%;
-    max-width: 420px;
-    background: var(--theme-card-bg);
-    backdrop-filter: blur(var(--lg-blur-lg));
-    -webkit-backdrop-filter: blur(var(--lg-blur-lg));
+    max-width: 450px;
+    background: var(--card-bg);
+    backdrop-filter: blur(var(--blur-lg));
+    -webkit-backdrop-filter: blur(var(--blur-lg));
     border-radius: var(--border-radius-xl);
     padding: var(--spacing-5xl) var(--spacing-4xl);
-    box-shadow: var(--theme-shadow);
-    border: 1px solid var(--theme-border);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
     animation: slideUp var(--transition-slow);
     position: relative;
     overflow: hidden;
     z-index: var(--z-card);
     margin: 0 auto;
-    transition: background 0.3s ease, border-color 0.3s ease;
+    transition: background var(--transition-normal), border-color var(--transition-normal);
+}
+
+/* 메인 컨텐츠 내부 컨테이너 */
+.main .container {
+    max-width: 450px;
+    margin: 0 auto;
 }
 
 .container::before {
@@ -258,14 +262,14 @@ body {
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, var(--theme-border), transparent);
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
 }
 
 /* 페이지 제목 */
 .page-title {
     font-size: 28px;
     font-weight: 800;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
     text-align: center;
     margin-bottom: var(--spacing-4xl);
     letter-spacing: -0.5px;
@@ -274,11 +278,10 @@ body {
 
 .page-subtitle {
     font-size: 16px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     font-weight: 500;
     text-align: center;
 }
-
 
 /* 반응형 페이지 레이아웃 */
 @media (max-width: 768px) {
@@ -315,6 +318,19 @@ body {
     .page-subtitle {
         font-size: 14px;
     }
+}
+
+/* 공통 폼 애니메이션 - 컨테이너 내부 폼 그룹에 자동 적용 */
+.container .form-group {
+    animation: slideInLeft 0.6s ease-out both;
+}
+
+.container .form-group:nth-child(1) { animation-delay: 0.5s; }
+.container .form-group:nth-child(2) { animation-delay: 0.6s; }
+.container .form-group:nth-child(3) { animation-delay: 0.7s; }
+
+.container .button-group {
+    animation: fadeIn 0.8s ease-out 0.8s both;
 }
 
 /* 추가 링크 스타일 */
@@ -357,7 +373,7 @@ body {
     width: 100%;
 }
 
-/* 일반 링크 (파란색) */
+/* 일반 링크 */
 .additional-links .link {
     color: #ffffff;
 }
@@ -366,183 +382,63 @@ body {
     background: #ffffff;
 }
 
-/* 탈퇴 링크 (빨간색) */
+/* 탈퇴 링크 */
 .additional-links .withdrawal-link {
-    color: var(--red);
+    color: var(--danger);
 }
 
 .additional-links .withdrawal-link::after {
-    background: var(--red);
+    background: var(--danger);
 }
 
+/* 테마 스타일 - 물결/유리 효과 */
 
-/* ========================================
-   Theme (merged from theme styles)
-   ======================================== */
-
-/* 
- * Theme - Apple Inspired Water/Glass Effect
- * 수영 커뮤니티에 최적화된 물결/유리 효과 테마
- */
-
-:root {
-    /* Theme Primary Colors */
-    --lg-primary: #2563EB;
-    --lg-primary-light: #3B82F6;
-    --lg-secondary: #1D4ED8;
-    
-    /* Glass Effect Colors - Enhanced for better contrast */
-    --lg-glass-bg: rgba(255, 255, 255, 0.18);
-    --lg-glass-bg-hover: rgba(255, 255, 255, 0.25);
-    --lg-glass-bg-light: rgba(255, 255, 255, 0.25);
-    --lg-glass-border: rgba(255, 255, 255, 0.35);
-    --lg-glass-border-light: rgba(255, 255, 255, 0.45);
-    
-    /* Button Shadow - 하드코딩 제거용 */
-    --lg-button-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    --lg-button-shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.4);
-    --lg-button-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
-    --lg-button-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.3);
-    --lg-focus-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
-    
-    /* Surface Colors */
-    --lg-surface-1: rgba(255, 255, 255, 0.95);
-    
-    /* Text Colors - Optimized for dark backgrounds */
-    --lg-text-on-dark: #FFFFFF;
-    --lg-text-on-glass: #FFFFFF;
-    
-    /* Icon/Stroke Colors - 파란색 대신 밝은 색상 */
-    --lg-icon-color: #FFFFFF;
-    
-    /* Form & Input Colors for compatibility - Enhanced contrast */
-    --theme-text-dark: #FFFFFF;
-    --theme-text-light: rgba(255, 255, 255, 0.9);
-    --theme-text-muted: rgba(255, 255, 255, 0.8);
-    --theme-text-disabled: rgba(255, 255, 255, 0.6);
-    --theme-input-bg: rgba(255, 255, 255, 0.1);
-    --theme-input-border: rgba(255, 255, 255, 0.3);
-    --theme-input-focus-border: var(--lg-primary-light);
-    --theme-card-bg: rgba(255, 255, 255, 0.08);
-    --theme-card-bg-light: rgba(255, 255, 255, 0.01);
-    --theme-card-bg-dropdown: rgba(255, 255, 255, 0.28);
-    --theme-card-hover-bg: rgba(255, 255, 255, 0.25);
-    --theme-card-hover-bg-light: rgba(255, 255, 255, 0.15);
-    --theme-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    --theme-border: rgba(255, 255, 255, 0.25);
-    --theme-border-light: rgba(255, 255, 255, 0.2);
-    --theme-accent: var(--lg-primary-light);
-    --theme-button-primary-bg: linear-gradient(135deg, var(--lg-primary) 0%, var(--lg-secondary) 100%);
-    --theme-button-primary-hover-bg: linear-gradient(135deg, var(--lg-secondary) 0%, var(--lg-primary) 100%);
-    
-    /* Blur Values */
-    --lg-blur-xs: 4px;
-    --lg-blur-sm: 8px;
-    --lg-blur-md: 16px;
-    --lg-blur-lg: 24px;
-    --lg-blur-xl: 40px;
-    
-    /* Glass Card Styles */
-    --lg-card-bg: rgba(255, 255, 255, 0.1);
-    --lg-card-border: 1px solid rgba(255, 255, 255, 0.2);
-    --lg-card-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    
-    /* Water Background Gradient */
-    --lg-bg-gradient: linear-gradient(180deg,
-        #1E3A8A 0%,
-        #1E40AF 50%,
-        #2563EB 100%);
-    
-    --lg-bg-gradient-dark: linear-gradient(180deg,
-        #0F172A 0%,
-        #1E3A8A 50%,
-        #2563EB 100%);
-    
-    /* Water Overlay Gradient - 매우 연한 배경 (눈의 피로 감소) */
-    --lg-water-overlay-gradient: linear-gradient(
-        180deg,
-        rgba(12, 74, 110, 0.04) 0%,
-        rgba(14, 116, 144, 0.03) 30%,
-        rgba(8, 145, 178, 0.025) 60%,
-        rgba(6, 182, 212, 0.02) 100%
-    );
-    
-    /* Water Overlay Gradient for Video Background (Home page) */
-    --lg-water-overlay-video-gradient: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 0.06) 0%,
-        rgba(0, 0, 0, 0.04) 30%,
-        rgba(0, 0, 0, 0.03) 60%,
-        rgba(0, 0, 0, 0.02) 100%
-    );
-    
-    /* Text Colors - 파란색 대신 밝은 색상 사용 */
-    --lg-text-accent: #FFFFFF;
-    
-    /* Animation Timings */
-    --lg-transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-    --lg-transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --lg-transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    --lg-transition-spring: 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-    
-    /* Border Radius */
-    --lg-radius-sm: 8px;
-    --lg-radius-md: 12px;
-    --lg-radius-lg: 16px;
-    --lg-radius-xl: 24px;
-    --lg-radius-2xl: 32px;
-    --lg-radius-full: 9999px;
-}
-
-
-/* LIQUID GLASS UTILITY CLASSES */
-
-/* Glass Card Base - Simple and clean */
+/* 기본 유리 카드 */
 .lg-glass {
     background: rgba(255, 255, 255, 0.18);
-    backdrop-filter: blur(var(--lg-blur-lg));
-    -webkit-backdrop-filter: blur(var(--lg-blur-lg));
+    backdrop-filter: blur(var(--blur-lg));
+    -webkit-backdrop-filter: blur(var(--blur-lg));
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    border-radius: var(--lg-radius-xl);
+    border-radius: var(--border-radius-xl);
 }
 
 .lg-glass-light {
-    background: var(--lg-glass-bg-light);
-    backdrop-filter: blur(var(--lg-blur-md));
-    -webkit-backdrop-filter: blur(var(--lg-blur-md));
-    border: 1px solid var(--lg-glass-border-light);
-    border-radius: var(--lg-radius-lg);
+    background: var(--glass-bg-hover);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    border: 1px solid var(--glass-border-light);
+    border-radius: var(--border-radius-lg);
 }
 
 .lg-glass-solid {
-    background: var(--lg-surface-1);
-    backdrop-filter: blur(var(--lg-blur-xl));
-    -webkit-backdrop-filter: blur(var(--lg-blur-xl));
+    background: var(--surface);
+    backdrop-filter: blur(var(--blur-xl));
+    -webkit-backdrop-filter: blur(var(--blur-xl));
     border: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.08),
         0 0 0 1px rgba(255, 255, 255, 0.1) inset;
-    border-radius: var(--lg-radius-xl);
+    border-radius: var(--border-radius-xl);
 }
 
-/* Glass Button */
+/* 유리 효과 버튼 */
 .lg-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     padding: 12px 24px;
-    background: var(--lg-glass-bg);
-    backdrop-filter: blur(var(--lg-blur-md));
-    -webkit-backdrop-filter: blur(var(--lg-blur-md));
-    border: 1px solid var(--lg-glass-border);
-    border-radius: var(--lg-radius-full);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-full);
     color: #FFFFFF;
     font-weight: 500;
     font-size: 15px;
     cursor: pointer;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
     position: relative;
     overflow: hidden;
 }
@@ -555,12 +451,12 @@ body {
         rgba(255, 255, 255, 0.1) 0%, 
         transparent 50%);
     opacity: 0;
-    transition: opacity var(--lg-transition-fast);
+    transition: opacity var(--transition-fast);
 }
 
 .lg-btn:hover {
-    background: var(--lg-glass-bg-hover);
-    border-color: var(--lg-glass-border-light);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-light);
 }
 
 .lg-btn:hover::before {
@@ -572,41 +468,37 @@ body {
 }
 
 .lg-btn-primary {
-    background: var(--lg-primary);
+    background: var(--primary);
     border: none;
     color: #FFFFFF;
-    box-shadow: var(--lg-button-shadow-sm);
+    box-shadow: var(--button-shadow-sm);
 }
 
 .lg-btn-primary:hover {
-    background: var(--lg-primary-light);
-    box-shadow: var(--lg-button-shadow);
+    background: var(--primary-light);
+    box-shadow: var(--button-shadow);
 }
 
-/* Card Hover Effects */
+/* 카드 호버 효과 */
 .lg-card-hover {
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
 }
 
 .lg-card-hover:hover {
-    border-color: var(--lg-glass-border-light);
+    border-color: var(--glass-border-light);
 }
 
-/* Loading Spinner */
+/* 로딩 스피너 */
 .lg-spinner {
     width: 40px;
     height: 40px;
-    border: 3px solid var(--lg-glass-border);
-    border-top-color: var(--lg-primary-light);
+    border: 3px solid var(--glass-border);
+    border-top-color: var(--primary-light);
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
 
-/* ========================================
-   LIQUID GLASS THEME - 공통 페이지 스타일
-   ======================================== */
-
-/* Water Background - 모든 theme 페이지에서 공통 사용 */
+/* Water Background */
 body.theme {
     font-family: 'Outfit', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
     position: relative;
@@ -619,46 +511,46 @@ body.theme::before {
     inset: 0;
     z-index: -1;
     overflow: hidden;
-    background: var(--lg-bg-gradient-dark);
+    background: var(--bg-gradient-dark);
 }
 
 body.theme::after {
     content: '';
     position: fixed;
     inset: 0;
-    background: var(--lg-water-overlay-gradient);
+    background: var(--water-overlay-gradient);
     z-index: -1;
     pointer-events: none;
 }
 
-/* Water Background (명시적 클래스 사용 시) */
+/* 물결 배경 클래스 */
 .water-bg {
     position: fixed;
     inset: 0;
     z-index: -1;
     overflow: hidden;
-    background: var(--lg-bg-gradient-dark);
+    background: var(--bg-gradient-dark);
 }
 
 .water-overlay {
     position: absolute;
     inset: 0;
-    background: var(--lg-water-overlay-gradient);
+    background: var(--water-overlay-gradient);
     z-index: var(--z-background);
     pointer-events: none;
 }
 
-/* Navigation Glass - 공통 네비게이션 스타일 */
+/* 네비게이션 유리 효과 스타일 */
 .nav-glass {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     height: 72px;
-    background: var(--theme-card-bg-light);
-    backdrop-filter: blur(var(--lg-blur-lg));
-    -webkit-backdrop-filter: blur(var(--lg-blur-lg));
-    border-bottom: 1px solid var(--theme-border-light);
+    background: var(--card-bg-light);
+    backdrop-filter: blur(var(--blur-lg));
+    -webkit-backdrop-filter: blur(var(--blur-lg));
+    border-bottom: 1px solid var(--border-light);
     z-index: var(--z-header);
 }
 
@@ -677,7 +569,7 @@ body.theme::after {
     align-items: center;
     gap: 10px;
     text-decoration: none;
-    color: var(--lg-text-on-glass);
+    color: var(--text-on-glass);
 }
 
 .logo-icon {
@@ -691,14 +583,14 @@ body.theme::after {
 .logo-icon svg {
     width: 100%;
     height: 100%;
-    stroke: var(--lg-icon-color);
+    stroke: var(--icon-color);
 }
 
 .logo-text {
     font-size: 24px;
     font-weight: 700;
     letter-spacing: -0.5px;
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
 }
 
 .nav-menu {
@@ -709,12 +601,12 @@ body.theme::after {
 
 .nav-link {
     padding: 10px 16px;
-    color: var(--lg-text-on-glass);
+    color: var(--text-on-glass);
     text-decoration: none;
     font-size: 15px;
     font-weight: 500;
-    border-radius: var(--lg-radius-full);
-    transition: all var(--lg-transition-normal);
+    border-radius: var(--border-radius-full);
+    transition: all var(--transition-normal);
     position: relative;
 }
 
@@ -722,10 +614,10 @@ body.theme::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--lg-glass-bg-hover);
-    border-radius: var(--lg-radius-full);
+    background: var(--glass-bg-hover);
+    border-radius: var(--border-radius-full);
     opacity: 0;
-    transition: opacity var(--lg-transition-fast);
+    transition: opacity var(--transition-fast);
 }
 
 .nav-link:hover::before {
@@ -733,7 +625,7 @@ body.theme::after {
 }
 
 .nav-link:hover {
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
 }
 
 .nav-actions {
@@ -746,33 +638,33 @@ body.theme::after {
     padding: 10px 20px;
     font-size: 14px;
     font-weight: 500;
-    border-radius: var(--lg-radius-full);
+    border-radius: var(--border-radius-full);
     cursor: pointer;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
     border: none;
     text-decoration: none;
 }
 
 .nav-btn-ghost {
     background: transparent;
-    color: var(--lg-text-on-glass);
-    border: 1px solid var(--lg-glass-border);
+    color: var(--text-on-glass);
+    border: 1px solid var(--glass-border);
 }
 
 .nav-btn-ghost:hover,
 .nav-btn-ghost.active {
-    background: var(--lg-glass-bg-hover);
-    border-color: var(--lg-glass-border-light);
+    background: var(--glass-bg-hover);
+    border-color: var(--glass-border-light);
 }
 
 .nav-btn-primary {
-    background: linear-gradient(135deg, var(--lg-primary) 0%, var(--lg-secondary) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: white;
-    box-shadow: var(--lg-button-shadow);
+    box-shadow: var(--button-shadow);
 }
 
 .nav-btn-primary:hover {
-    box-shadow: var(--lg-button-shadow-hover);
+    box-shadow: var(--button-shadow-hover);
     transform: translateY(-1px);
 }
 
@@ -789,27 +681,27 @@ body.theme::after {
 .nav-mobile-toggle span {
     width: 22px;
     height: 2px;
-    background: var(--lg-text-on-glass);
+    background: var(--text-on-glass);
     border-radius: 2px;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
 }
 
-/* Mobile Menu */
+/* 모바일 메뉴 */
 .mobile-menu {
     display: none;
     position: fixed;
     top: 72px;
     left: 0;
     right: 0;
-    background: var(--lg-glass-bg);
-    backdrop-filter: blur(var(--lg-blur-xl));
-    -webkit-backdrop-filter: blur(var(--lg-blur-xl));
-    border-bottom: 1px solid var(--lg-glass-border);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--blur-xl));
+    -webkit-backdrop-filter: blur(var(--blur-xl));
+    border-bottom: 1px solid var(--glass-border);
     z-index: var(--z-mobile-menu);
     padding: 16px;
     transform: translateY(-100%);
     opacity: 0;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
 }
 
 .mobile-menu.active {
@@ -825,36 +717,34 @@ body.theme::after {
 
 .mobile-menu-link {
     padding: 14px 16px;
-    color: var(--lg-text-on-glass);
+    color: var(--text-on-glass);
     text-decoration: none;
     font-size: 16px;
     font-weight: 500;
-    border-radius: var(--lg-radius-md);
-    transition: background var(--lg-transition-fast);
+    border-radius: var(--border-radius-md);
+    transition: background var(--transition-fast);
 }
 
 .mobile-menu-link:hover {
-    background: var(--lg-glass-bg-hover);
+    background: var(--glass-bg-hover);
 }
 
 .mobile-menu-link-primary {
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
 }
 
 .mobile-menu-divider {
     height: 1px;
-    background: var(--lg-glass-border);
+    background: var(--glass-border);
     margin: 8px 0;
 }
 
-/* ========================================
-   FOOTER
-   ======================================== */
+/* 푸터 */
 .footer-glass {
     background: rgba(12, 74, 110, 0.6);
-    backdrop-filter: blur(var(--lg-blur-lg));
-    -webkit-backdrop-filter: blur(var(--lg-blur-lg));
-    border-top: 1px solid var(--lg-glass-border);
+    backdrop-filter: blur(var(--blur-lg));
+    -webkit-backdrop-filter: blur(var(--blur-lg));
+    border-top: 1px solid var(--glass-border);
     padding: 64px 24px 32px;
 }
 
@@ -879,7 +769,7 @@ body.theme::after {
 .footer-logo .logo-text {
     font-size: 28px;
     font-weight: 700;
-    color: var(--lg-text-on-glass);
+    color: var(--text-on-glass);
 }
 
 .footer-tagline {
@@ -912,18 +802,18 @@ body.theme::after {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
-    transition: color var(--lg-transition-fast);
+    transition: color var(--transition-fast);
 }
 
 .footer-link:hover {
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
 }
 
 .footer-bottom {
     max-width: 1200px;
     margin: 48px auto 0;
     padding-top: 24px;
-    border-top: 1px solid var(--lg-glass-border);
+    border-top: 1px solid var(--glass-border);
 }
 
 .footer-copyright {

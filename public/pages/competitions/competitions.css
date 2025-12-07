@@ -22,7 +22,7 @@
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     margin-bottom: 16px;
 }
 
@@ -69,14 +69,14 @@
 
 .filter-select {
     padding: 10px 40px 10px 16px;
-    background: var(--lg-glass-bg);
-    border: 1px solid var(--lg-glass-border);
-    border-radius: var(--lg-radius-md);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-md);
     color: white;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    transition: all var(--lg-transition-fast);
+    transition: all var(--transition-fast);
     appearance: none;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -85,14 +85,14 @@
 }
 
 .filter-select:hover {
-    background-color: var(--lg-glass-bg-hover);
-    border-color: var(--lg-glass-border-light);
+    background-color: var(--glass-bg-hover);
+    border-color: var(--glass-border-light);
 }
 
 .filter-select:focus {
     outline: none;
-    border-color: var(--lg-primary);
-    box-shadow: var(--lg-focus-shadow);
+    border-color: var(--primary);
+    box-shadow: var(--focus-shadow);
 }
 
 .filter-select option {
@@ -120,7 +120,7 @@
     justify-content: space-between;
     margin-bottom: 24px;
     padding-bottom: 16px;
-    border-bottom: 1px solid var(--lg-glass-border);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .month-title {
@@ -132,9 +132,9 @@
 .month-count {
     font-size: 14px;
     color: rgba(255, 255, 255, 0.6);
-    background: var(--lg-glass-bg);
+    background: var(--glass-bg);
     padding: 6px 14px;
-    border-radius: var(--lg-radius-full);
+    border-radius: var(--border-radius-full);
 }
 
 .competitions-list {
@@ -149,7 +149,7 @@
     align-items: flex-start;
     gap: 24px;
     padding: 24px;
-    transition: all var(--lg-transition-normal);
+    transition: all var(--transition-normal);
 }
 
 .competition-date {
@@ -159,8 +159,8 @@
     justify-content: center;
     min-width: 70px;
     padding: 16px 12px;
-    background: linear-gradient(135deg, var(--lg-primary) 0%, var(--lg-secondary) 100%);
-    border-radius: var(--lg-radius-lg);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    border-radius: var(--border-radius-lg);
     text-align: center;
 }
 
@@ -193,7 +193,7 @@
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.5px;
-    border-radius: var(--lg-radius-full);
+    border-radius: var(--border-radius-full);
 }
 
 .badge-masters {
@@ -236,7 +236,7 @@
 .detail-item svg {
     width: 16px;
     height: 16px;
-    stroke: var(--lg-icon-color);
+    stroke: var(--icon-color);
     flex-shrink: 0;
 }
 
@@ -249,14 +249,14 @@
     padding: 6px 14px;
     font-size: 12px;
     font-weight: 600;
-    border-radius: var(--lg-radius-full);
+    border-radius: var(--border-radius-full);
     white-space: nowrap;
 }
 
 .status-upcoming {
-    background: var(--lg-glass-bg);
-    color: var(--lg-text-accent);
-    border: 1px solid var(--lg-glass-border);
+    background: var(--glass-bg);
+    color: var(--text-accent);
+    border: 1px solid var(--glass-border);
 }
 
 .status-ongoing {
@@ -295,15 +295,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--lg-glass-bg);
-    border-radius: var(--lg-radius-lg);
+    background: var(--glass-bg);
+    border-radius: var(--border-radius-lg);
     flex-shrink: 0;
 }
 
 .info-icon svg {
     width: 24px;
     height: 24px;
-    stroke: var(--lg-icon-color);
+    stroke: var(--icon-color);
 }
 
 .info-content {
@@ -324,7 +324,7 @@
 }
 
 .info-desc a {
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     text-decoration: none;
     font-weight: 500;
 }

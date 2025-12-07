@@ -34,11 +34,11 @@
 
 /* 공통 카드 스타일 */
 .card-section {
-    background: var(--theme-card-bg);
+    background: var(--card-bg);
     border-radius: var(--border-radius-xl);
     padding: var(--spacing-3xl);
-    box-shadow: var(--theme-shadow);
-    border: 1px solid var(--theme-border);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
     position: relative;
     overflow: hidden;
     z-index: var(--z-card);
@@ -71,7 +71,7 @@
 .product-title {
     font-size: 24px;
     font-weight: 700;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
     letter-spacing: -0.3px;
     line-height: 1.4;
     flex: 1;
@@ -103,8 +103,8 @@
 
 .product-status-badge.status-reserved {
     background: var(--success-bg-light);
-    color: var(--green);
-    border: 1px solid var(--green);
+    color: var(--success);
+    border: 1px solid var(--success);
 }
 
 .product-status-badge.status-sold {
@@ -117,7 +117,7 @@
 .product-price {
     font-size: 32px;
     font-weight: 800;
-    color: var(--theme-accent);
+    color: var(--accent);
     margin-bottom: var(--spacing-md);
     line-height: 1.2;
 }
@@ -126,10 +126,10 @@
 .product-category {
     font-size: 16px;
     font-weight: 600;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     margin-bottom: var(--spacing-xl);
     padding-bottom: var(--spacing-lg);
-    border-bottom: 1px solid var(--theme-border);
+    border-bottom: 1px solid var(--border);
 }
 
 .btn-product-action {
@@ -159,12 +159,12 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: var(--theme-input-bg);
+    background: var(--input-bg);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 14px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     font-weight: 600;
     overflow: hidden;
     flex-shrink: 0;
@@ -179,7 +179,7 @@
 
 .seller-name {
     font-size: 14px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     font-weight: 500;
 }
 
@@ -192,7 +192,7 @@
 
 .product-location {
     font-size: 14px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     font-weight: 500;
     display: flex;
     align-items: center;
@@ -201,7 +201,7 @@
 
 .product-date {
     font-size: 12px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     opacity: 0.7;
 }
 
@@ -213,7 +213,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--theme-input-bg);
+    background: var(--input-bg);
     min-height: 260px;
 }
 
@@ -246,7 +246,7 @@
     aspect-ratio: 1;
     overflow: hidden;
     border-radius: var(--border-radius-md);
-    background: var(--theme-input-bg);
+    background: var(--input-bg);
 }
 
 .product-image-item-container .product-image-item {
@@ -260,12 +260,12 @@
 .product-content {
     font-size: 16px;
     line-height: 1.7;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
     white-space: pre-wrap;
     word-break: break-word;
     margin-bottom: var(--spacing-xl);
     padding-bottom: var(--spacing-xl);
-    border-bottom: 1px solid var(--theme-border);
+    border-bottom: 1px solid var(--border);
 }
 
 /* 상품 통계 */
@@ -290,12 +290,12 @@
 .view-count {
     font-size: 14px;
     font-weight: 600;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
 }
 
 .stat-label {
     font-size: 14px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
 }
 
 /* 댓글 섹션 */
@@ -307,7 +307,7 @@
 .comments-title {
     font-size: 20px;
     font-weight: 700;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
     margin-bottom: var(--spacing-xl);
     letter-spacing: -0.3px;
 }
@@ -315,19 +315,19 @@
 /* 입력 필드 스타일*/
 .text-input {
     width: 100%;
-    border: 1px solid var(--theme-input-border);
+    border: 1px solid var(--input-border);
     border-radius: var(--border-radius-md);
     font-family: inherit;
     line-height: 1.5;
-    color: var(--theme-text-light);
-    background: var(--theme-input-bg);
+    color: var(--text-light);
+    background: var(--input-bg);
     resize: vertical;
     transition: var(--transition-fast);
     outline: none;
 }
 
 .text-input:focus {
-    border-color: var(--theme-input-focus-border);
+    border-color: var(--input-focus-border);
     box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3);
 }
 
@@ -345,25 +345,25 @@
 
 .comment-input {
     padding: var(--spacing-lg);
-    border: 2px solid var(--theme-input-border);
+    border: 2px solid var(--input-border);
     border-radius: var(--border-radius-lg);
     font-size: 16px;
     font-weight: 500;
     letter-spacing: -0.2px;
     min-height: 80px;
-    background: var(--theme-input-bg);
+    background: var(--input-bg);
     backdrop-filter: blur(10px);
     transition: var(--transition-normal);
-    color: var(--theme-text-light);
+    color: var(--text-light);
     width: 100%;
     resize: vertical;
 }
 
 .comment-input:focus {
-    background: var(--theme-card-hover-bg);
+    background: var(--card-hover-bg);
     box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.3);
     transform: translateY(-1px);
-    border-color: var(--theme-input-focus-border);
+    border-color: var(--input-focus-border);
 }
 
 .comment-input::placeholder {
@@ -385,9 +385,9 @@
 
 .comment-item {
     padding: var(--spacing-lg);
-    background: var(--theme-card-bg);
+    background: var(--card-bg);
     border-radius: var(--border-radius-lg);
-    border: 1px solid var(--theme-border);
+    border: 1px solid var(--border);
     transition: var(--transition-normal);
 }
 
@@ -413,19 +413,19 @@
 .comment-author .author-name {
     font-size: 14px;
     font-weight: 600;
-    color: var(--white);
+    color: var(--text-on-glass);
 }
 
 .comment-author .author-avatar {
     width: 28px;
     height: 28px;
     border-radius: 50%;
-    background: var(--theme-input-bg);
+    background: var(--input-bg);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 12px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     font-weight: 600;
     overflow: hidden;
     flex-shrink: 0;
@@ -447,7 +447,7 @@
 
 .comment-date {
     font-size: 12px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     font-weight: 500;
 }
 
@@ -466,7 +466,7 @@
 .comment-content {
     font-size: 15px;
     line-height: 1.5;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     white-space: pre-wrap;
     word-break: break-word;
 }
@@ -484,7 +484,7 @@
     padding: var(--spacing-sm);
     font-size: 15px;
     min-height: 80px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
 }
 
 .comment-edit-actions {
@@ -498,13 +498,13 @@
 .comment-footer {
     margin-top: var(--spacing-sm);
     padding-top: var(--spacing-sm);
-    border-top: 1px solid var(--theme-border);
+    border-top: 1px solid var(--border);
 }
 
 .reply-btn {
     background: none;
     border: none;
-    color: var(--theme-text-light);
+    color: var(--text-light);
     font-size: 13px;
     font-weight: 500;
     cursor: pointer;
@@ -515,8 +515,8 @@
 }
 
 .reply-btn:hover {
-    background: var(--theme-card-hover-bg);
-    color: var(--theme-text-dark);
+    background: var(--card-hover-bg);
+    color: var(--text-dark);
 }
 
 .reply-btn:active {
@@ -528,8 +528,8 @@
     margin-left: var(--spacing-2xl);
     margin-top: var(--spacing-md);
     padding-left: var(--spacing-xl);
-    border-left: 2px solid var(--theme-border);
-    background: var(--theme-input-bg);
+    border-left: 2px solid var(--border);
+    background: var(--input-bg);
     position: relative;
 }
 
@@ -545,9 +545,9 @@
 .reply-input-container {
     margin-top: var(--spacing-md);
     padding: var(--spacing-md);
-    background: var(--theme-input-bg);
+    background: var(--input-bg);
     border-radius: var(--border-radius-md);
-    border: 1px solid var(--theme-border);
+    border: 1px solid var(--border);
 }
 
 .reply-input-wrapper {
@@ -560,7 +560,7 @@
     padding: var(--spacing-sm) var(--spacing-md);
     font-size: 14px;
     min-height: 60px;
-    color: var(--theme-text-light);
+    color: var(--text-light);
 }
 
 .reply-actions {

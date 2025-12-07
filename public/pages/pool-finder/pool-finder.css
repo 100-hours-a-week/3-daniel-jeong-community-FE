@@ -24,7 +24,7 @@
     font-size: 12px;
     font-weight: 600;
     letter-spacing: 2px;
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     margin-bottom: 16px;
 }
 
@@ -77,12 +77,12 @@
 .search-input {
     flex: 1;
     padding: 12px 16px 12px 44px;
-    background: var(--lg-glass-bg);
-    border: 1px solid var(--lg-glass-border);
-    border-radius: var(--lg-radius-full);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-full);
     color: white;
     font-size: 14px;
-    transition: all var(--lg-transition-fast);
+    transition: all var(--transition-fast);
 }
 
 .search-input::placeholder {
@@ -91,25 +91,25 @@
 
 .search-input:focus {
     outline: none;
-    border-color: var(--lg-text-accent);
-    background: var(--lg-glass-bg-hover);
+    border-color: var(--text-accent);
+    background: var(--glass-bg-hover);
 }
 
 .search-btn {
     padding: 12px 24px;
-    background: linear-gradient(135deg, var(--lg-primary) 0%, var(--lg-secondary) 100%);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
     color: white;
     border: none;
-    border-radius: var(--lg-radius-full);
+    border-radius: var(--border-radius-full);
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all var(--lg-transition-fast);
+    transition: all var(--transition-fast);
 }
 
 .search-btn:hover {
     transform: translateY(-1px);
-    box-shadow: var(--lg-button-shadow);
+    box-shadow: var(--button-shadow);
 }
 
 .location-btn {
@@ -117,14 +117,14 @@
     align-items: center;
     gap: 8px;
     padding: 12px 20px;
-    background: var(--lg-glass-bg);
-    border: 1px solid var(--lg-glass-border);
-    border-radius: var(--lg-radius-full);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-full);
     color: white;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
-    transition: all var(--lg-transition-fast);
+    transition: all var(--transition-fast);
 }
 
 .location-btn svg {
@@ -133,8 +133,8 @@
 }
 
 .location-btn:hover {
-    background: var(--lg-glass-bg-hover);
-    border-color: var(--lg-text-accent);
+    background: var(--glass-bg-hover);
+    border-color: var(--text-accent);
 }
 
 .location-btn:disabled {
@@ -159,7 +159,7 @@
 .map {
     width: 100%;
     height: 100%;
-    border-radius: var(--lg-radius-lg);
+    border-radius: var(--border-radius-lg);
     overflow: hidden;
 }
 
@@ -177,7 +177,7 @@
     color: white;
     margin: 0 0 20px 0;
     padding-bottom: 16px;
-    border-bottom: 1px solid var(--lg-glass-border);
+    border-bottom: 1px solid var(--glass-border);
 }
 
 .pool-finder-list-content {
@@ -188,16 +188,16 @@
 
 .pool-item {
     padding: 16px;
-    background: var(--lg-glass-bg);
-    border: 1px solid var(--lg-glass-border);
-    border-radius: var(--lg-radius-md);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--border-radius-md);
     cursor: pointer;
-    transition: all var(--lg-transition-fast);
+    transition: all var(--transition-fast);
 }
 
 .pool-item:hover {
-    background: var(--lg-glass-bg-hover);
-    border-color: var(--lg-text-accent);
+    background: var(--glass-bg-hover);
+    border-color: var(--text-accent);
     transform: translateX(4px);
 }
 
@@ -218,10 +218,10 @@
 .pool-distance {
     font-size: 12px;
     font-weight: 500;
-    color: var(--lg-text-accent);
+    color: var(--text-accent);
     padding: 4px 8px;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: var(--lg-radius-sm);
+    border-radius: var(--border-radius-sm);
 }
 
 .pool-item-body {

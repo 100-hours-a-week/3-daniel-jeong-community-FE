@@ -23,10 +23,10 @@
     max-width: 400px;
     width: 90%;
     max-height: 80vh;
-    background: var(--theme-card-bg-light);
-    backdrop-filter: blur(var(--lg-blur-lg));
-    -webkit-backdrop-filter: blur(var(--lg-blur-lg));
-    border: 1px solid var(--theme-border-light);
+    background: var(--card-bg-light);
+    backdrop-filter: blur(var(--blur-lg));
+    -webkit-backdrop-filter: blur(var(--blur-lg));
+    border: 1px solid var(--border-light);
     border-radius: var(--border-radius-md);
     box-shadow: var(--modal-shadow);
     overflow: hidden;
@@ -42,14 +42,14 @@
 .modal-header {
     padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-lg);
     text-align: center;
-    border-bottom: 1px solid var(--theme-border-light);
+    border-bottom: 1px solid var(--border-light);
     transition: border-color 0.3s ease;
 }
 
 .modal-title {
     font-size: var(--font-size-3xl);
     font-weight: 700;
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
     letter-spacing: -0.3px;
     margin: 0 0 var(--spacing-sm) 0;
     transition: color 0.3s ease;
@@ -57,7 +57,7 @@
 
 .modal-subtitle {
     font-size: var(--font-size-md);
-    color: var(--theme-text-muted);
+    color: var(--text-muted);
     line-height: 1.5;
     margin: 0;
     transition: color 0.3s ease;
@@ -66,7 +66,7 @@
 /* 모달 내용 */
 .modal-content {
     padding: var(--spacing-lg) var(--spacing-2xl);
-    color: var(--theme-text-dark);
+    color: var(--text-dark);
     line-height: 1.6;
     transition: color 0.3s ease;
 }
@@ -81,11 +81,11 @@
 .modal-actions .btn-cancel {
     flex: 1;
     padding: var(--spacing-md) var(--spacing-2xl);
-    background: var(--theme-input-bg);
-    backdrop-filter: blur(var(--lg-blur-md));
-    -webkit-backdrop-filter: blur(var(--lg-blur-md));
-    color: var(--lg-text-on-glass);
-    border: 1px solid var(--theme-border-light);
+    background: var(--input-bg);
+    backdrop-filter: blur(var(--blur-md));
+    -webkit-backdrop-filter: blur(var(--blur-md));
+    color: var(--text-on-glass);
+    border: 1px solid var(--border-light);
     border-radius: var(--border-radius-sm);
     font-size: var(--font-size-base);
     font-weight: 600;
@@ -95,7 +95,7 @@
 }
 
 .modal-actions .btn-cancel:hover {
-    background: var(--theme-card-hover-bg-light);
+    background: var(--card-hover-bg-light);
     transform: translateY(-1px);
 }
 

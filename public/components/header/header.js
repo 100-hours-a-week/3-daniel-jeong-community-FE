@@ -534,8 +534,8 @@ class AppHeader extends HTMLElement {
                     nav.style.background = 'rgba(12, 74, 110, 0.85)';
                     nav.style.borderBottomColor = 'rgba(255, 255, 255, 0.15)';
                 } else {
-                    nav.style.background = 'var(--theme-card-bg-light)';
-                    nav.style.borderBottomColor = 'var(--theme-border-light)';
+                    nav.style.background = 'var(--card-bg-light)';
+                    nav.style.borderBottomColor = 'var(--border-light)';
                 }
             }, 50);
         };
