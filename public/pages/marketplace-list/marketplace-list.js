@@ -43,6 +43,17 @@ function createLocationIcon() {
     return img;
 }
 
+// 상품 이미지 플레이스홀더 생성
+function createProductImagePlaceholder() {
+    const placeholder = document.createElement('div');
+    placeholder.className = 'product-image-placeholder';
+    const logoImg = document.createElement('img');
+    logoImg.src = S3_CONFIG.getImageUrl('misc/logo.svg');
+    logoImg.alt = 'S.W.M Logo';
+    placeholder.appendChild(logoImg);
+    return placeholder;
+}
+
 // 상품 카드 생성
 function createProductCard(product) {
     const card = document.createElement('div');
@@ -52,47 +63,38 @@ function createProductCard(product) {
     const productImage = document.createElement('div');
     productImage.className = 'product-image';
     
-    const img = document.createElement('img');
-    img.alt = product.title;
-    img.loading = 'lazy';
-
     // 썸네일 이미지 로딩 (S3, 없으면 로고 이미지 사용)
     if (product.thumbnailKey) {
+        const img = document.createElement('img');
+        img.alt = product.title;
+        img.loading = 'lazy';
+        productImage.appendChild(img);
+        
         // S3에서 Public URL 조회
         S3_CONFIG.getPublicUrl(product.thumbnailKey).then((url) => {
             if (url) {
                 img.src = url;
+                // 이미지 로드 실패 시 플레이스홀더로 대체
+                img.onerror = () => {
+                    img.replaceWith(createProductImagePlaceholder());
+                };
             } else {
                 // URL 조회 실패 시 로고 플레이스홀더 표시
-                img.remove();
-                const placeholder = document.createElement('div');
-                placeholder.className = 'product-image-placeholder';
-                const logoImg = document.createElement('img');
-                logoImg.src = S3_CONFIG.getImageUrl('misc/logo.svg');
-                logoImg.alt = 'S.W.M Logo';
-                placeholder.appendChild(logoImg);
-                productImage.appendChild(placeholder);
+                img.replaceWith(createProductImagePlaceholder());
             }
+        }).catch(() => {
+            // 에러 발생 시 플레이스홀더로 대체
+            const img = productImage.querySelector('img');
+            if (img) img.replaceWith(createProductImagePlaceholder());
         });
     } else {
         // 썸네일이 없으면 로고 플레이스홀더 표시
-        img.remove();
-        const placeholder = document.createElement('div');
-        placeholder.className = 'product-image-placeholder';
-        const logoImg = document.createElement('img');
-        logoImg.src = S3_CONFIG.getImageUrl('misc/logo.svg');
-        logoImg.alt = 'S.W.M Logo';
-        placeholder.appendChild(logoImg);
-        productImage.appendChild(placeholder);
+        productImage.appendChild(createProductImagePlaceholder());
     }
+    
     const statusBadge = document.createElement('div');
     statusBadge.className = `product-status product-status-${product.status.toLowerCase()}`;
     statusBadge.textContent = STATUS_TEXT[product.status] || product.status;
-    
-    // 실제 이미지가 존재하는 경우에만 추가 (플레이스홀더가 아닌 경우)
-    if (img.parentElement === productImage) {
-        productImage.appendChild(img);
-    }
     productImage.appendChild(statusBadge);
     
     // 상품 정보
@@ -291,3 +293,4 @@ function init() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+

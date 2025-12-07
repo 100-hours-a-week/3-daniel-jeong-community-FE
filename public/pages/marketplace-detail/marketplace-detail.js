@@ -629,7 +629,7 @@ const handleDeleteProduct = async () => {
         }
         
         Toast.success('상품이 삭제되었습니다');
-        navigateTo('/marketplace');
+        navigateTo('/marketplace-list');
     } catch (error) {
         Toast.error(error.message || '상품 삭제에 실패했습니다');
     }
@@ -748,7 +748,7 @@ const initProductData = async () => {
     const productId = getUrlParam('id');
     if (!productId) {
         Toast.error('상품 ID가 필요합니다');
-        navigateTo('/marketplace');
+        navigateTo('/marketplace-list');
         return;
     }
 
@@ -762,7 +762,7 @@ const initProductData = async () => {
         
         if (!product) {
             Toast.error('상품을 찾을 수 없습니다');
-            navigateTo('/marketplace');
+            navigateTo('/marketplace-list');
             return;
         }
 
@@ -771,7 +771,7 @@ const initProductData = async () => {
         await loadComments(productId);
     } catch (error) {
         Toast.error(error.message || '상품 정보를 불러오는데 실패했습니다');
-        navigateTo('/marketplace');
+        navigateTo('/marketplace-list');
     }
 };
 

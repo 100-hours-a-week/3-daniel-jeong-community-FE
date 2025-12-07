@@ -283,7 +283,7 @@ function showSuccess(message) {
     }
     isPostSubmitted = true;
     Toast.success(message, '등록 완료', { duration: 2000 });
-    setTimeout(() => navigateTo('/marketplace'), 1000);
+            setTimeout(() => navigateTo('/marketplace-list'), 1000);
 }
 
 document.addEventListener('DOMContentLoaded', init);

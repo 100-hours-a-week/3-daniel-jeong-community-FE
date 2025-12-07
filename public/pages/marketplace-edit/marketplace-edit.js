@@ -136,7 +136,7 @@ async function loadProductData() {
         
         if (!productId) {
             Toast.error('상품 ID가 필요합니다.');
-            navigateTo('/marketplace');
+            navigateTo('/marketplace-list');
             return;
         }
         
@@ -155,7 +155,7 @@ async function loadProductData() {
             
             if (!productData) {
                 Toast.error('상품을 찾을 수 없습니다.');
-                navigateTo('/marketplace');
+                navigateTo('/marketplace-list');
                 return;
             }
         }
@@ -322,7 +322,7 @@ async function handlePostUpdate() {
         Toast.success('상품이 수정되었습니다.');
         // 성공 후 상세 페이지로 이동 (히스토리 교체하여 뒤로가기 방지)
         setTimeout(() => {
-            window.history.replaceState(null, '', '/marketplace');
+            window.history.replaceState(null, '', '/marketplace-list');
             navigateTo(`/marketplace-detail?id=${productId}`);
         }, 1200);
     } catch (error) {
