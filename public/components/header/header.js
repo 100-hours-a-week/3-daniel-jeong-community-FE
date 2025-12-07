@@ -227,6 +227,7 @@ class AppHeader extends HTMLElement {
     constructor() {
         super();
         this.onBack = this.onBack.bind(this);
+        this.closeMobileMenuHandler = null;
     }
 
     connectedCallback() { 
@@ -254,6 +255,12 @@ class AppHeader extends HTMLElement {
     
     // 헤더 비동기 렌더링
     async renderAsync() {
+        // 이전 리스너 정리
+        if (this.closeMobileMenuHandler) {
+            document.removeEventListener('click', this.closeMobileMenuHandler);
+            this.closeMobileMenuHandler = null;
+        }
+        
         const showBack = this.hasAttribute('show-back');
         const showProfile = this.hasAttribute('show-profile');
         const showMenu = this.getAttribute('show-menu') !== 'false';
@@ -394,6 +401,22 @@ class AppHeader extends HTMLElement {
     }
 
     /**
+     * 모바일 메뉴 닫기
+     */
+    closeMobileMenu() {
+        const mobileMenu = this.querySelector('.mobile-menu');
+        const toggle = this.querySelector('.nav-mobile-toggle');
+        
+        if (mobileMenu) mobileMenu.classList.remove('active');
+        if (toggle) toggle.classList.remove('active');
+        
+        if (this.closeMobileMenuHandler) {
+            document.removeEventListener('click', this.closeMobileMenuHandler);
+            this.closeMobileMenuHandler = null;
+        }
+    }
+
+    /**
      * 모바일 메뉴 토글 버튼 생성
      */
     createMobileToggle() {
@@ -401,17 +424,34 @@ class AppHeader extends HTMLElement {
         toggle.className = 'nav-mobile-toggle';
         toggle.id = 'mobileMenuBtn';
         toggle.setAttribute('aria-label', '메뉴');
+        toggle.type = 'button';
 
         for (let i = 0; i < 3; i++) {
             const span = document.createElement('span');
             toggle.appendChild(span);
         }
 
-        toggle.addEventListener('click', () => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
             const mobileMenu = this.querySelector('.mobile-menu');
-            if (mobileMenu) {
-                mobileMenu.classList.toggle('active');
-                toggle.classList.toggle('active');
+            if (!mobileMenu) return;
+            
+            const isActive = mobileMenu.classList.contains('active');
+            mobileMenu.classList.toggle('active');
+            toggle.classList.toggle('active');
+            
+            if (!isActive) {
+                // 외부 클릭 시 메뉴 닫기
+                this.closeMobileMenuHandler = (event) => {
+                    if (!mobileMenu.contains(event.target) && !toggle.contains(event.target)) {
+                        this.closeMobileMenu();
+                    }
+                };
+                setTimeout(() => document.addEventListener('click', this.closeMobileMenuHandler), 0);
+            } else {
+                this.closeMobileMenu();
             }
         });
 
@@ -436,6 +476,7 @@ class AppHeader extends HTMLElement {
                 link.classList.add('active');
             }
             link.textContent = item.label;
+            link.addEventListener('click', () => this.closeMobileMenu());
             content.appendChild(link);
         });
 
@@ -465,11 +506,13 @@ class AppHeader extends HTMLElement {
             userEditLink.href = '/user-edit';
             userEditLink.className = 'mobile-menu-link';
             userEditLink.textContent = '회원정보수정';
+            userEditLink.addEventListener('click', () => this.closeMobileMenu());
             
             const passwordEditLink = document.createElement('a');
             passwordEditLink.href = '/password-edit';
             passwordEditLink.className = 'mobile-menu-link';
             passwordEditLink.textContent = '비밀번호수정';
+            passwordEditLink.addEventListener('click', () => this.closeMobileMenu());
             
             content.appendChild(userEditLink);
             content.appendChild(passwordEditLink);
@@ -481,6 +524,7 @@ class AppHeader extends HTMLElement {
             logoutLink.textContent = '로그아웃';
             logoutLink.addEventListener('click', (e) => {
                 e.preventDefault();
+                this.closeMobileMenu();
                 new Modal({
                     title: MODAL_MESSAGE.TITLE_LOGOUT,
                     subtitle: MODAL_MESSAGE.SUBTITLE_LOGOUT,
@@ -496,11 +540,13 @@ class AppHeader extends HTMLElement {
             loginLink.href = NAVIGATION_ACTIONS.LOGIN.path;
             loginLink.className = 'mobile-menu-link';
             loginLink.textContent = NAVIGATION_ACTIONS.LOGIN.label;
+            loginLink.addEventListener('click', () => this.closeMobileMenu());
 
             const signupLink = document.createElement('a');
             signupLink.href = NAVIGATION_ACTIONS.SIGNUP.path;
             signupLink.className = 'mobile-menu-link';
             signupLink.textContent = NAVIGATION_ACTIONS.SIGNUP.label;
+            signupLink.addEventListener('click', () => this.closeMobileMenu());
 
             content.appendChild(divider);
             content.appendChild(loginLink);
@@ -512,7 +558,7 @@ class AppHeader extends HTMLElement {
     }
 
     /**
-     * 헤더 이벤트 초기화 (스크롤 효과 등)
+     * 헤더 이벤트 초기화
      */
     initHeaderEvents() {
         // 네비게이션 스크롤 효과
