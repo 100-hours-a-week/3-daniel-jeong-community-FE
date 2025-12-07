@@ -25,6 +25,8 @@
     --danger-shadow-sm: 0 2px 8px rgba(239, 68, 68, 0.3);
     --danger-shadow-md: 0 4px 12px rgba(239, 68, 68, 0.4);
     --dropdown-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+    --dropdown-bg: rgba(30, 41, 59, 0.95);
+    --mobile-menu-overlay-bg: rgba(0, 0, 0, 0.7);
     --user-info-gradient: linear-gradient(135deg, rgba(59, 130, 246, 0.10) 0%, rgba(99, 102, 241, 0.08) 25%, rgba(139, 92, 246, 0.10) 50%, rgba(236, 72, 153, 0.08) 75%, rgba(251, 191, 36, 0.06) 100%);
     --profile-shadow: 0 4px 12px rgba(59, 130, 246, 0.2), 0 0 0 2px rgba(255, 255, 255, 0.8);
     --button-click-bg: rgba(255, 255, 255, 0.2);
@@ -233,7 +235,7 @@ body {
 /* 공통 컨테이너 */
 .container {
     width: 100%;
-    max-width: 450px;
+    max-width: 480px;
     background: var(--card-bg);
     backdrop-filter: blur(var(--blur-lg));
     -webkit-backdrop-filter: blur(var(--blur-lg));
@@ -247,12 +249,6 @@ body {
     z-index: var(--z-card);
     margin: 0 auto;
     transition: background var(--transition-normal), border-color var(--transition-normal);
-}
-
-/* 메인 컨텐츠 내부 컨테이너 */
-.main .container {
-    max-width: 450px;
-    margin: 0 auto;
 }
 
 .container::before {
@@ -318,19 +314,6 @@ body {
     .page-subtitle {
         font-size: 14px;
     }
-}
-
-/* 공통 폼 애니메이션 - 컨테이너 내부 폼 그룹에 자동 적용 */
-.container .form-group {
-    animation: slideInLeft 0.6s ease-out both;
-}
-
-.container .form-group:nth-child(1) { animation-delay: 0.5s; }
-.container .form-group:nth-child(2) { animation-delay: 0.6s; }
-.container .form-group:nth-child(3) { animation-delay: 0.7s; }
-
-.container .button-group {
-    animation: fadeIn 0.8s ease-out 0.8s both;
 }
 
 /* 추가 링크 스타일 */
