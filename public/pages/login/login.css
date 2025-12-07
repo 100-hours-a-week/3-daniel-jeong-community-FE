@@ -12,11 +12,11 @@
 .login-container {
     width: 100%;
     max-width: 450px;
-    padding: 40px 24px;
+    padding: var(--spacing-4xl) var(--spacing-2xl);
 }
 
 .login-card {
-    padding: 48px 40px;
+    padding: var(--spacing-5xl) var(--spacing-4xl);
 }
 
 .login-header {
