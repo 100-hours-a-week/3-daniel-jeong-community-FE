@@ -550,6 +550,9 @@ class AppHeader extends HTMLElement {
             content.appendChild(logoutLink);
         } else {
             // 로그아웃 상태: 로그인/회원가입 링크 표시
+            const divider = document.createElement('div');
+            divider.className = 'mobile-menu-divider';
+            
             const loginLink = document.createElement('a');
             loginLink.href = NAVIGATION_ACTIONS.LOGIN.path;
             loginLink.className = 'mobile-menu-link';
