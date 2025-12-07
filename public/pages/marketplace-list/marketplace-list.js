@@ -258,7 +258,6 @@ async function loadProducts() {
         filteredProducts = [...products];
         filterProducts();
     } catch (error) {
-        console.error(error);
         // 로딩 실패 시 비워진 상태로 렌더
         products = [];
         filteredProducts = [];

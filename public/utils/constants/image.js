@@ -46,7 +46,6 @@ export const S3_CONFIG = Object.freeze({
                 const result = await response.json();
                 return result.data?.url || null;
             } catch (error) {
-                console.error('이미지 URL 조회 실패:', error);
                 return null;
             }
         })();

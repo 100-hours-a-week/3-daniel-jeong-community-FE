@@ -281,7 +281,6 @@ const getCommentInput = (parentId) => {
     }
 
     if (!elements.commentInput) {
-        console.error('commentInput element not found');
         return null;
     }
 

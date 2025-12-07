@@ -9,7 +9,6 @@ export function getUserFromStorage() {
         const userStr = localStorage.getItem('user') || sessionStorage.getItem('user');
         return userStr ? JSON.parse(userStr) : null;
     } catch (error) {
-        console.error('Failed to parse user data:', error);
         return null;
     }
 }
@@ -27,7 +26,6 @@ export function saveUserToStorage(userData, rememberMe = false) {
             localStorage.removeItem('user');
         }
     } catch (error) {
-        console.error('Failed to save user data:', error);
     }
 }
 

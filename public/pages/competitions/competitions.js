@@ -54,7 +54,6 @@ async function loadCompetitions() {
             renderCompetitions();
         }
     } catch (error) {
-        console.error('Error loading competitions:', error);
     }
 }
 

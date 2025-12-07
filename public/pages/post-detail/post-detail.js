@@ -466,7 +466,6 @@ function getCommentInput(parentId) {
     
     // 일반 댓글 입력창에서 값 가져오기
     if (!elements.commentInput) {
-        console.error('commentInput element not found');
         return null;
     }
     

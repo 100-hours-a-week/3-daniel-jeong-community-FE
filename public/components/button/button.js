@@ -193,7 +193,6 @@ export class Button {
             : container;
         
         if (!containerElement) {
-            console.error('Button container not found');
             return null;
         }
         

@@ -21,7 +21,6 @@ export function createFormHandler(options) {
 
     const formElement = resolveFormElement(form);
     if (!formElement) {
-        console.error('Form element not found:', form);
         return createNoopCleanup();
     }
 
