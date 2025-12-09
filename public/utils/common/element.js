@@ -145,7 +145,7 @@ export function setupLocationCharCounter(locationInput, locationCounter, options
 
 // 가격 입력 포맷터 설정 (숫자만 허용, 천 단위 콤마 자동 추가)
 export function setupPriceFormatter(priceInput, options = {}) {
-    const { maxDigits = 8 } = options;
+    const { maxDigits = 8, maxPrice = 10000000 } = options;
     
     if (!priceInput) return;
     
@@ -158,19 +158,26 @@ export function setupPriceFormatter(priceInput, options = {}) {
             return;
         }
         
-        // 최대 자리수 제한
-        if (digits.length > maxDigits) {
-            digits = digits.slice(0, maxDigits);
-        }
-        
         const numeric = Number(digits);
         if (Number.isNaN(numeric)) {
             e.target.value = '';
             return;
         }
         
+        // 최대 가격 제한 (1000만원)
+        if (numeric > maxPrice) {
+            digits = String(maxPrice);
+        }
+        
+        // 최대 자리수 제한
+        if (digits.length > maxDigits) {
+            digits = digits.slice(0, maxDigits);
+        }
+        
+        const limitNumeric = Number(digits);
+        
         // 천 단위 콤마 포맷팅
-        const formatted = numeric.toLocaleString('ko-KR');
+        const formatted = limitNumeric.toLocaleString('ko-KR');
         // 무한 루프 방지: 포맷된 값과 다를 때만 업데이트
         if (e.target.value !== formatted) {
             e.target.value = formatted;
