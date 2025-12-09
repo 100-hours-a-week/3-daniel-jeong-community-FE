@@ -90,7 +90,8 @@ const initElements = () => {
         postActions: 'postActions',
         commentSubmitBtnContainer: 'commentSubmitBtn',
         commentsList: 'commentsList',
-        commentInput: 'commentInput'
+        commentInput: 'commentInput',
+        commentCharCount: 'commentCharCount'
     });
 };
 
@@ -445,11 +446,17 @@ const createCommentElement = (comment, depth = 0) => {
     return commentElement;
 };
 
-// 댓글 입력 처리 (버튼 활성화/비활성화)
+// 댓글 입력 처리 (버튼 활성화/비활성화, 글자수 카운터 업데이트)
 const handleCommentInput = debounce(() => {
     if (!elements.commentInput || !elements.commentSubmitBtn) return;
-    const hasCommentContent = getElementValue(elements.commentInput).trim().length > 0;
+    const content = getElementValue(elements.commentInput);
+    const hasCommentContent = content.trim().length > 0;
     elements.commentSubmitBtn.setDisabled(!hasCommentContent);
+    
+    // 글자수 카운터 업데이트
+    if (elements.commentCharCount) {
+        elements.commentCharCount.textContent = content.length;
+    }
 }, 150);
 
 // 댓글 입력값 가져오기
@@ -513,7 +520,14 @@ function addComment(newComment, parentId) {
 function resetCommentInput(inputElement, parentId) {
     if (parentId) {
         // 답글 입력창인 경우: 입력값 초기화 후 답글 입력창 닫기
-        if (inputElement) inputElement.value = '';
+        if (inputElement) {
+            inputElement.value = '';
+            // 답글 글자수 카운터 초기화
+            const charCountElement = document.getElementById(`replyCharCount-${parentId}`);
+            if (charCountElement) {
+                charCountElement.textContent = '0';
+            }
+        }
         toggleReplyInput(parentId);
         return;
     }
@@ -521,6 +535,9 @@ function resetCommentInput(inputElement, parentId) {
     // 일반 댓글 입력창인 경우: 입력값 초기화 및 제출 버튼 비활성화
     if (elements.commentInput) {
         setElementValue(elements.commentInput, '');
+    }
+    if (elements.commentCharCount) {
+        elements.commentCharCount.textContent = '0';
     }
     if (elements.commentSubmitBtn) {
         elements.commentSubmitBtn.setDisabled(true);
@@ -566,9 +583,20 @@ const submitComment = async (parentId = null) => {
 const createReplyInputForm = (commentId) => {
     const inputWrapper = createElement('div', 'reply-input-wrapper');
     
+    const textareaContainer = createElement('div', 'reply-input-container');
     const textarea = createElement('textarea', 'reply-input text-input');
     textarea.placeholder = PLACEHOLDER.REPLY;
     textarea.rows = 2;
+    textarea.maxLength = 500;
+    
+    const charCounter = createElement('div', 'comment-char-counter');
+    const charCountSpan = createElement('span', '', '0');
+    charCountSpan.id = `replyCharCount-${commentId}`;
+    charCounter.appendChild(charCountSpan);
+    charCounter.appendChild(document.createTextNode('/500'));
+    
+    textareaContainer.appendChild(textarea);
+    textareaContainer.appendChild(charCounter);
     
     const actionsContainer = createElement('div', 'reply-actions');
     actionsContainer.id = `replyActions-${commentId}`;
@@ -585,9 +613,15 @@ const createReplyInputForm = (commentId) => {
     textarea.addEventListener('input', () => {
         const button = actionsContainer.querySelector('.btn');
         if (button) button.disabled = !textarea.value.trim();
+        
+        // 답글 글자수 카운터 업데이트
+        const charCountElement = document.getElementById(`replyCharCount-${commentId}`);
+        if (charCountElement) {
+            charCountElement.textContent = textarea.value.length;
+        }
     });
     
-    inputWrapper.appendChild(textarea);
+    inputWrapper.appendChild(textareaContainer);
     inputWrapper.appendChild(actionsContainer);
     return { inputWrapper, textarea };
 };

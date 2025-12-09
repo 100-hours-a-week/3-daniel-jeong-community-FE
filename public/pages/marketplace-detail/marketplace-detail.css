@@ -344,8 +344,13 @@
     gap: var(--spacing-lg);
 }
 
+.comment-input-wrapper {
+    position: relative;
+}
+
 .comment-input {
     padding: var(--spacing-lg);
+    padding-bottom: 40px;
     border: 2px solid var(--input-border);
     border-radius: var(--border-radius-lg);
     font-size: 16px;
@@ -358,6 +363,16 @@
     color: var(--text-light);
     width: 100%;
     resize: vertical;
+}
+
+.comment-char-counter {
+    position: absolute;
+    bottom: var(--spacing-sm);
+    right: var(--spacing-lg);
+    font-size: 13px;
+    color: var(--text-light);
+    font-weight: 500;
+    pointer-events: none;
 }
 
 .comment-input:focus {
@@ -544,6 +559,7 @@
 
 /* 답글 입력 컨테이너 */
 .reply-input-container {
+    position: relative;
     margin-top: var(--spacing-md);
     padding: var(--spacing-md);
     background: var(--input-bg);
@@ -559,9 +575,12 @@
 
 .reply-input {
     padding: var(--spacing-sm) var(--spacing-md);
+    padding-bottom: 35px;
     font-size: 14px;
     min-height: 60px;
     color: var(--text-light);
+    width: 100%;
+    resize: vertical;
 }
 
 .reply-actions {
