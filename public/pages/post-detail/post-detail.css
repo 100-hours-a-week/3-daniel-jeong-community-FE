@@ -397,7 +397,7 @@
 
 .comment-input {
     padding: var(--spacing-lg);
-    padding-bottom: 40px;
+    padding-bottom: 35px;
     border: 2px solid var(--input-border);
     border-radius: var(--border-radius-lg);
     font-size: 16px;
@@ -414,8 +414,8 @@
 
 .comment-char-counter {
     position: absolute;
-    bottom: var(--spacing-sm);
-    right: var(--spacing-lg);
+    bottom: 8px;
+    right: 12px;
     font-size: 13px;
     color: var(--text-light);
     font-weight: 500;
@@ -602,7 +602,6 @@
 
 /* 답글 입력 컨테이너 */
 .reply-input-container {
-    position: relative;
     margin-top: var(--spacing-md);
     padding: var(--spacing-md);
     background: var(--input-bg);
@@ -616,9 +615,13 @@
     gap: var(--spacing-sm);
 }
 
+.reply-input-wrapper-inner {
+    position: relative;
+}
+
 .reply-input {
     padding: var(--spacing-sm) var(--spacing-md);
-    padding-bottom: 35px;
+    padding-bottom: 30px;
     font-size: 14px;
     min-height: 60px;
     width: 100%;
@@ -630,6 +633,11 @@
     gap: var(--spacing-xs);
     justify-content: flex-end;
     margin-top: var(--spacing-xs);
+}
+
+.reply-input-wrapper-inner .comment-char-counter {
+    bottom: 6px;
+    right: 10px;
 }
 
 .btn-reply-action {

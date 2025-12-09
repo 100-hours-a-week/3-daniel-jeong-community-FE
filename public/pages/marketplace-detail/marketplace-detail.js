@@ -265,17 +265,17 @@ const createCommentElement = (comment, depth = 0) => {
 };
 
 // 댓글 입력 처리 (버튼 활성화/비활성화, 글자수 카운터 업데이트)
-const handleCommentInput = debounce(() => {
+const handleCommentInput = () => {
     if (!elements.commentInput || !elements.commentSubmitBtn) return;
     const content = getElementValue(elements.commentInput);
     const hasCommentContent = content.trim().length > 0;
     elements.commentSubmitBtn.setDisabled(!hasCommentContent);
     
-    // 글자수 카운터 업데이트
+    // 글자수 카운터 즉시 업데이트
     if (elements.commentCharCount) {
         elements.commentCharCount.textContent = content.length;
     }
-}, 150);
+};
 
 // 댓글 입력값 가져오기
 const getCommentInput = (parentId) => {
@@ -390,6 +390,7 @@ const createReplyInputForm = (commentId) => {
     const inputWrapper = createElement('div', 'reply-input-wrapper');
 
     const textareaContainer = createElement('div', 'reply-input-container');
+    const textareaWrapper = createElement('div', 'reply-input-wrapper-inner');
     const textarea = createElement('textarea', 'reply-input text-input');
     textarea.placeholder = PLACEHOLDER.REPLY;
     textarea.rows = 2;
@@ -401,8 +402,9 @@ const createReplyInputForm = (commentId) => {
     charCounter.appendChild(charCountSpan);
     charCounter.appendChild(document.createTextNode('/500'));
     
-    textareaContainer.appendChild(textarea);
-    textareaContainer.appendChild(charCounter);
+    textareaWrapper.appendChild(textarea);
+    textareaWrapper.appendChild(charCounter);
+    textareaContainer.appendChild(textareaWrapper);
 
     const actionsContainer = createElement('div', 'reply-actions');
     actionsContainer.id = `replyActions-${commentId}`;
