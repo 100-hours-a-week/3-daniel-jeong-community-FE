@@ -126,12 +126,11 @@ export function toggleLoadingIndicator(indicator, show) {
 
 // 위치 입력 글자수 카운터 설정
 export function setupLocationCharCounter(locationInput, locationCounter, options = {}) {
-    const { maxLength = 26, warningThreshold = 24 } = options;
+    const { maxLength = 26 } = options;
     
     if (!locationInput || !locationCounter) return;
     
     locationCounter.textContent = locationInput.value.length;
-    const charCounterParent = locationCounter.parentElement;
     
     locationInput.addEventListener('input', () => {
         // 최대 길이 제한
@@ -141,8 +140,6 @@ export function setupLocationCharCounter(locationInput, locationCounter, options
         
         const count = locationInput.value.length;
         locationCounter.textContent = count;
-        // 경고 임계값 이상일 때 경고 표시
-        charCounterParent?.classList.toggle('warning', count >= warningThreshold);
     });
 }
 
