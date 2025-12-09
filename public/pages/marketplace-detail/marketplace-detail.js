@@ -410,7 +410,7 @@ const createReplyInputForm = (commentId) => {
     createButtons(
         [
             { text: '등록', variant: 'primary', onClick: () => submitComment(commentId), size: 'small' },
-            { text: '취소', variant: 'secondary', onClick: () => toggleReplyInput(commentId), size: 'small' }
+            { text: '취소', variant: 'danger', onClick: () => toggleReplyInput(commentId), size: 'small' }
         ],
         actionsContainer,
         'btn-reply-action'
@@ -473,7 +473,7 @@ const createCommentEditForm = (commentId, content) => {
     createButtons(
         [
             { text: '저장', variant: 'primary', onClick: () => saveCommentEdit(commentId) },
-            { text: '취소', variant: 'secondary', onClick: () => { editingCommentId = null; renderComments(); } }
+            { text: '취소', variant: 'danger', onClick: () => { editingCommentId = null; renderComments(); } }
         ],
         actionsContainer,
         'btn-comment-action'

@@ -89,19 +89,19 @@
 
 /* 공통 작은 버튼 스타일 */
 .btn-small {
-    box-shadow: none !important;
+    box-shadow: none;
 }
 
 .btn-small:hover,
 .btn-small:active {
-    box-shadow: none !important;
+    box-shadow: none;
 }
 
 .btn-post-action {
-    padding: 6px 12px !important;
-    font-size: 12px !important;
-    min-width: 60px !important;
-    height: 32px !important;
+    padding: 6px 12px;
+    font-size: 12px;
+    min-width: 60px;
+    height: 32px;
 }
 
 /* 게시글 메타 정보 */
@@ -516,10 +516,10 @@
 }
 
 .btn-comment-action {
-    padding: 4px 8px !important;
-    font-size: 11px !important;
-    min-width: 50px !important;
-    height: 28px !important;
+    padding: 4px 8px;
+    font-size: 11px;
+    min-width: 50px;
+    height: 28px;
 }
 
 .comment-content {
@@ -633,10 +633,10 @@
 }
 
 .btn-reply-action {
-    padding: 4px 12px !important;
-    font-size: 12px !important;
-    min-width: 60px !important;
-    height: 28px !important;
+    padding: 4px 8px;
+    font-size: 11px;
+    min-width: 50px;
+    height: 28px;
 }
 
 
