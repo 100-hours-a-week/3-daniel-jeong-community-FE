@@ -27,13 +27,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: aws-actions/configure-aws-credentials@v4
-        if: secrets.AWS_ACCESS_KEY_ID != ''
+        if: ${{ secrets.AWS_ACCESS_KEY_ID != '' }}
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Fetch API keys from Parameter Store
-        if: secrets.AWS_ACCESS_KEY_ID != ''
+        if: ${{ secrets.AWS_ACCESS_KEY_ID != '' }}
         run: |
           PARAM_VALUE=$(aws ssm get-parameter --name "${{ secrets.KAKAO_MAP_PARAM_NAME }}" --with-decryption --query "Parameter.Value" --output text --region ${{ secrets.AWS_REGION }} 2>/dev/null || echo "")
           if [ -z "$PARAM_VALUE" ] || [ "$PARAM_VALUE" == "None" ]; then
@@ -43,7 +43,7 @@ jobs:
             echo "KAKAO_MAP_JAVASCRIPT_KEY=$PARAM_VALUE" >> $GITHUB_ENV
           fi
       - name: Set empty API key if not set
-        if: secrets.AWS_ACCESS_KEY_ID == ''
+        if: ${{ secrets.AWS_ACCESS_KEY_ID == '' }}
         run: |
           echo "KAKAO_MAP_JAVASCRIPT_KEY=" >> $GITHUB_ENV
       - name: Build static assets
