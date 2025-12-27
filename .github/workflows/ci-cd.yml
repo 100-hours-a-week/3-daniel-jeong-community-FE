@@ -27,18 +27,25 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: aws-actions/configure-aws-credentials@v4
+        if: secrets.AWS_ACCESS_KEY_ID != ''
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Fetch API keys from Parameter Store
+        if: secrets.AWS_ACCESS_KEY_ID != ''
         run: |
           PARAM_VALUE=$(aws ssm get-parameter --name "${{ secrets.KAKAO_MAP_PARAM_NAME }}" --with-decryption --query "Parameter.Value" --output text --region ${{ secrets.AWS_REGION }} 2>/dev/null || echo "")
           if [ -z "$PARAM_VALUE" ] || [ "$PARAM_VALUE" == "None" ]; then
-            echo "Error: KAKAO_MAP_JAVASCRIPT_KEY not found"
-            exit 1
+            echo "Warning: KAKAO_MAP_JAVASCRIPT_KEY not found"
+            echo "KAKAO_MAP_JAVASCRIPT_KEY=" >> $GITHUB_ENV
+          else
+            echo "KAKAO_MAP_JAVASCRIPT_KEY=$PARAM_VALUE" >> $GITHUB_ENV
           fi
-          echo "KAKAO_MAP_JAVASCRIPT_KEY=$PARAM_VALUE" >> $GITHUB_ENV
+      - name: Set empty API key if not set
+        if: secrets.AWS_ACCESS_KEY_ID == ''
+        run: |
+          echo "KAKAO_MAP_JAVASCRIPT_KEY=" >> $GITHUB_ENV
       - name: Build static assets
         env:
           S3_BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
@@ -56,13 +63,17 @@ jobs:
           find ${BUILD_DIR} -type d \( -name ".git" -o -name "__pycache__" -o -name ".vscode" -o -name ".idea" \) -exec rm -rf {} + 2>/dev/null || true
           
           if [ -f "${BUILD_DIR}/pages/pool-finder/pool-finder.js" ]; then
-            sed -i "s|'{{KAKAO_MAP_JAVASCRIPT_KEY}}'|'${KAKAO_MAP_JAVASCRIPT_KEY}'|g" "${BUILD_DIR}/pages/pool-finder/pool-finder.js"
+            if [ -n "${KAKAO_MAP_JAVASCRIPT_KEY}" ]; then
+              sed -i "s|'{{KAKAO_MAP_JAVASCRIPT_KEY}}'|'${KAKAO_MAP_JAVASCRIPT_KEY}'|g" "${BUILD_DIR}/pages/pool-finder/pool-finder.js"
+            else
+              sed -i "s|'{{KAKAO_MAP_JAVASCRIPT_KEY}}'|''|g" "${BUILD_DIR}/pages/pool-finder/pool-finder.js"
+            fi
           fi
           
           cat > ${BUILD_DIR}/config.js <<EOF
           window.APP_CONFIG = {
-            KAKAO_MAP_JAVASCRIPT_KEY: "${KAKAO_MAP_JAVASCRIPT_KEY}",
-            BASE_URL: "${BASE_URL}"
+            KAKAO_MAP_JAVASCRIPT_KEY: "${KAKAO_MAP_JAVASCRIPT_KEY:-}",
+            BASE_URL: "${BASE_URL:-}"
           };
           EOF
           
@@ -163,13 +174,17 @@ jobs:
           find ${BUILD_DIR} -type d \( -name ".git" -o -name "__pycache__" -o -name ".vscode" -o -name ".idea" \) -exec rm -rf {} + 2>/dev/null || true
           
           if [ -f "${BUILD_DIR}/pages/pool-finder/pool-finder.js" ]; then
-            sed -i "s|'{{KAKAO_MAP_JAVASCRIPT_KEY}}'|'${KAKAO_MAP_JAVASCRIPT_KEY}'|g" "${BUILD_DIR}/pages/pool-finder/pool-finder.js"
+            if [ -n "${KAKAO_MAP_JAVASCRIPT_KEY}" ]; then
+              sed -i "s|'{{KAKAO_MAP_JAVASCRIPT_KEY}}'|'${KAKAO_MAP_JAVASCRIPT_KEY}'|g" "${BUILD_DIR}/pages/pool-finder/pool-finder.js"
+            else
+              sed -i "s|'{{KAKAO_MAP_JAVASCRIPT_KEY}}'|''|g" "${BUILD_DIR}/pages/pool-finder/pool-finder.js"
+            fi
           fi
           
           cat > ${BUILD_DIR}/config.js <<EOF
           window.APP_CONFIG = {
-            KAKAO_MAP_JAVASCRIPT_KEY: "${KAKAO_MAP_JAVASCRIPT_KEY}",
-            BASE_URL: "${BASE_URL}"
+            KAKAO_MAP_JAVASCRIPT_KEY: "${KAKAO_MAP_JAVASCRIPT_KEY:-}",
+            BASE_URL: "${BASE_URL:-}"
           };
           EOF
           
